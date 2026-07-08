@@ -15,11 +15,12 @@ class Sketch:
 
 
 def get_version(dependency_name: str) -> tuple[str, str]:
-    pattern = r"/([^/]+)@([\d.]+)"
+    # pattern = r"/([^/]+)@([\d.]+)"
+    pattern = r"/([^/]+)@([\d.]+)/.*\/([^/]+)$"
     match = re.search(pattern, dependency_name)
 
     if match:
-        return match.group(1), match.group(2)
+        return match.group(1), match.group(2), match.group(3)
     return ()
 
 
@@ -41,12 +42,13 @@ def export_dependencies_to_df(sketches):
         # remove empty dependencies (e.g., current sketch.js it's detected as a dependency
         valid_deps = [dep for dep in sketch.dependencies if dep]
         rows_tmp = []
-        for lib, version in valid_deps:
+        for package, version, lib in valid_deps:
             rows_tmp.append({
                 "name": sketch.name,
                 "url": str(sketch.url),  # Convert PosixPath to string for cleaner display
-                "dependency_name": lib,
-                "dependency_version": version
+                "dependency_name": package,
+                "dependency_version": version,
+                "file_name": lib
             })
 
         if not rows_tmp:
@@ -54,7 +56,8 @@ def export_dependencies_to_df(sketches):
                 "name": sketch.name,
                 "url": str(sketch.url),
                 "dependency_name": None,
-                "dependency_version": None
+                "dependency_version": None,
+                "file_name": None
             })
 
         rows += rows_tmp
