@@ -1,3 +1,5 @@
 # Manglar
 
-![Alt text](manglar.png)
+<p align="center">
+  <img src="manglar.png" alt="Logo" width="200"/>
+</p>
