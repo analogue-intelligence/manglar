@@ -1,3 +1,3 @@
 # Manglar
 
-![Alt text](.manglar.png)
+![Alt text](manglar.png)
