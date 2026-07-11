@@ -6,6 +6,8 @@ from bs4 import BeautifulSoup
 import re
 
 import pandas as pd
+from pandas import DataFrame
+
 
 @dataclass
 class Sketch:
@@ -37,6 +39,14 @@ def extract_dependencies(f: Path):
 
 
 def export_dependencies_to_df(sketches):
+    df = create_df(sketches)
+
+    if not df.empty:
+        os.makedirs(Path("../out"), exist_ok=True)
+        df.to_csv("../out/dependencies.csv", index=False)
+
+
+def create_df(sketches) -> DataFrame:
     rows = []
     for sketch in sketches:
         # remove empty dependencies (e.g., current sketch.js it's detected as a dependency
@@ -61,8 +71,7 @@ def export_dependencies_to_df(sketches):
             })
 
         rows += rows_tmp
-    df = pd.DataFrame(rows)
-    print(df)
+    return pd.DataFrame(rows)
 
 def main(pth: str):
     sketches:list[Sketch] = detect_dependencies(pth)
