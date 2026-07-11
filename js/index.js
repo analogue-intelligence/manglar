@@ -1,6 +1,6 @@
 import * as acorn from "acorn"
 import * as recast from "recast";
-import * as fs from 'node:fs';
+import * as fs from 'node:fs/promises';
 // import { Visitor } from 'recast';
 import * as path from 'path'
 
@@ -9,51 +9,75 @@ let acornconfig = {
     sourceType: "script",
     allowReturnOutsideFunction: true
 }
-const rawAstFolder = "astAnalysis/rawASTs/";
+
 const KNOWN_GLOBALS = ['ml5', 'matter', 'dat', 'Tone', 'p5'];
 
-function traverseFolder(artfolder) {
-    fs.readdir(artfolder, (err, files) => {
-        files.forEach(file => {
-            const filePath = path.join(artfolder, file);
 
-            if (fs.statSync(filePath).isDirectory()) {
-                traverseFolder(filePath);
-            } else if (fs.statSync(filePath).isFile() && filePath.endsWith(".js")) {
-                try {
-                    const code = fs.readFileSync(filePath).toString();
-                    const ast = acorn.parse(code, acornconfig).body;
-                    console.log(filePath);
-                    // serializeAST(file, ast)
-                    // AST transformation
-                    processAST(ast);
-                } catch (error) {
-                    console.error(`Error reading or parsing file ${file}:`, error.message);
-                }
+class Sketch {
+    constructor(name, url) {
+        this.name = name;
+        this.url = url;
+        this.dependencies = new Set();
+    }
+}
 
-            } else {
 
+
+async function traverseFolder(artfolder) {
+    const files = await fs.readdir(artfolder);
+
+    await Promise.all(files.map(async file => {
+        const filePath = path.join(artfolder, file);
+        const stat = await fs.stat(filePath);
+
+        if (stat.isDirectory()) {
+            await traverseFolder(filePath);
+        } else if (stat.isFile() && filePath.endsWith(".js")) {
+            try {
+                const code = await fs.readFile(filePath, "utf8");
+                const ast = acorn.parse(code, acornconfig).body;
+                console.log(filePath);
+                processAST(filePath, ast);
+            } catch (error) {
+                console.error(`Error reading or parsing file ${file}:`, error.message);
             }
-        });
-    });
+        }
+    }));
 }
 
-function main() {
+const sketches = new Map();
+
+async function main() {
     const artfolder = "../data/"
-    traverseFolder(artfolder);
+    await traverseFolder(artfolder);
+    console.log(sketches);
 }
 
-function processAST(ast) {
+function addSketchDependency(filepath, dependencyName) {
+    const sketchName = getSketchName(filepath);
+
+    if (!sketches.has(sketchName)) {
+        sketches.set(sketchName, new Sketch(sketchName, filepath));
+    }
+    sketches.get(sketchName).dependencies.add(dependencyName);
+    // console.log(sketches.get(sketchName));
+}
+
+function processAST(filepath, ast) {
     recast.visit(ast, {
         visitImportDeclaration(path) {
-            console.log("Found ES6 import:" + path.value.id.name);
+            const dependencyName = path.value.id.name;
+            console.log("Found ES6 import:" + dependencyName + " from " + filepath);
+            addSketchDependency(filepath, dependencyName);
             this.traverse(path);
         },
         visitCallExpression(path) {
             const node = path.value;
             if (node.callee.name === 'require') {
                 if (node.arguments.length > 0 && (node.arguments[0].type === 'Literal' || node.arguments[0].type === 'StringLiteral')) {
-                    console.log("Found require() Dependency:", node.arguments[0].value);
+                    const dependencyName = node.arguments[0].value
+                    console.log("Found require() Dependency:", dependencyName  + " from " + filepath);
+                    addSketchDependency(filepath, dependencyName);
                 }
             }
             this.traverse(path);
@@ -62,7 +86,7 @@ function processAST(ast) {
         visitIdentifier(path) {
             const name = path.value.name;
 
-            if (KNOWN_GLOBALS.includes(name)) {
+            if (KNOWN_GLOBALS.includes(name) || KNOWN_GLOBALS.includes(name.toString().toLowerCase())) {
                 // Basic heuristic check: Ensure it's not a variable declaration *inside* this file
                 // (e.g., matching `const ml5 = ...` would be redundant or a local override)
                 const parent = path.parent?.value;
@@ -70,8 +94,8 @@ function processAST(ast) {
                     // Skip if it's the one declaring it
                     return this.traverse(path);
                 }
-                console.log(`Found Implicit Global Dependency usage: ${name}`);
-                // console.log(path.parent);
+                console.log(`Found Implicit Global Dependency usage: ${name}` + " from " + filepath);
+                addSketchDependency(filepath, name);
 
             }
             this.traverse(path);
@@ -80,3 +104,9 @@ function processAST(ast) {
 }
 
 main();
+
+// console.log(getSketchName("../data/sketch_example/sketch.js"));
+
+function getSketchName(filepath) {
+    return filepath.split('/').at(-2);
+}
