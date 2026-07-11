@@ -1,4 +1,5 @@
 require('example')
+require('Matter')
 
 function setup() {
   createCanvas(400, 400);
