@@ -1,0 +1,27 @@
+{
+  "name": "manglar",
+  "version": "1.0.0",
+  "description": "a node project that analyzes p5 sketches to collect dependencies",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha",
+    "build": "tsc",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "code analysis",
+    "generative art"
+  ],
+  "author": "Mauricio Verano Merino",
+  "license": "MIT",
+  "dependencies": {
+    "acorn": "^8.16.0",
+    "mocha": "^11.7.5",
+    "recast": "^0.23.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/analogue-intelligence/manglar.git"
+  }
+}
