@@ -16,14 +16,22 @@ class Sketch:
     dependencies: dict[str, str]
 
 
-def get_version(dependency_name: str) -> tuple[str, str]:
+def get_version(dependency_name: str) -> tuple:
+    """
+    Parses a dependency string to extract the dependency name, version, and filename.
+    :param dependency_name: The string containing the dependency information in the
+        format `/dependency_name@version/other_info/filename`.
+    :return: A tuple containing the extracted dependency name, version, and filename;
+        if not found, the original dependency name with version and filename as None.
+    """
     # pattern = r"/([^/]+)@([\d.]+)"
     pattern = r"/([^/]+)@([\d.]+)/.*\/([^/]+)$"
     match = re.search(pattern, dependency_name)
 
     if match:
+        # name, version, filename
         return match.group(1), match.group(2), match.group(3)
-    return ()
+    return (dependency_name, None, None)
 
 
 def extract_dependencies(f: Path):
