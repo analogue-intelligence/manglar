@@ -34,8 +34,30 @@
                     Third-Party Libraries
                 </button>
                 <ul class="collapse show" id="c-app-lib">
-                    <li class="tax-leaf">P5 Libraries</li>
-                    <li class="tax-leaf">Common JS libraries (e.g., via npm)</li>
+                    <li>
+                        <button class="tax-toggle" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#c-app-lib-p5"
+                                aria-expanded="true" aria-controls="c-app-lib-p5">
+                            <span class="chevron" aria-hidden="true">&#9656;</span>
+                            P5 Libraries
+                        </button>
+                        <ul class="collapse show" id="c-app-lib-p5">
+                            <li class="tax-leaf">p5.sound</li>
+                            <li class="tax-leaf">p5.capture</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button class="tax-toggle" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#c-app-lib-js"
+                                aria-expanded="true" aria-controls="c-app-lib-js">
+                            <span class="chevron" aria-hidden="true">&#9656;</span>
+                            Common JS libraries
+                        </button>
+                        <ul class="collapse show" id="c-app-lib-js">
+                            <li class="tax-leaf">semver</li>
+                            <li class="tax-leaf">@babel/traverse</li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
 
@@ -142,9 +164,8 @@
                     Data Sources and Persistence
                 </button>
                 <ul class="collapse show" id="c-app-source">
-                    <li class="tax-leaf">Local datasets</li>
-                    <li class="tax-leaf">Remote datasets</li>
-                    <li class="tax-leaf">JSON, CSV, XML, or binary data files</li>
+                    <li class="tax-leaf">Local datasets (JSON, CSV, XML, or binary data files)</li>
+                    <li class="tax-leaf">Remote datasets (JSON, CSV, XML, or binary data files)</li>
                     <li class="tax-leaf">Local databases</li>
                     <li class="tax-leaf">Remote databases</li>
                 </ul>
@@ -163,6 +184,21 @@
                     <li class="tax-leaf">Noise seed</li>
                     <li class="tax-leaf">Saved application state</li>
                     <li class="tax-leaf">User-generated content</li>
+                </ul>
+            </li>
+
+            <li>
+                <button class="tax-toggle" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#c-net-internet"
+                        aria-expanded="true" aria-controls="c-net-internet">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
+                    Internet Access Requirement
+                </button>
+                <ul class="collapse show" id="c-net-internet">
+                    <li class="tax-leaf">Fully offline (no internet required)</li>
+                    <li class="tax-leaf">Internet required at load time only</li>
+                    <li class="tax-leaf">Internet required continuously during execution</li>
+                    <li class="tax-leaf">Degrades gracefully without internet</li>
                 </ul>
             </li>
 
