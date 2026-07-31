@@ -1,0 +1,107 @@
+.tax-intro {
+            max-width: 65ch;
+        }
+
+        .tax-controls {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: .5rem;
+            padding: .75rem 0;
+            margin-bottom: .5rem;
+            border-bottom: 1px solid #dee2e6;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 10;
+        }
+
+        .tax-search {
+            flex: 1 1 220px;
+            max-width: 320px;
+        }
+
+        .tax-no-results {
+            color: #6c757d;
+            font-style: italic;
+        }
+
+        .tax-tree, .tax-tree ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tax-tree {
+            column-count: 2;
+            column-gap: 3rem;
+        }
+
+        @media (max-width: 700px) {
+            .tax-tree {
+                column-count: 1;
+            }
+        }
+
+        .tax-tree ul {
+            margin-left: .9rem;
+            padding-left: .9rem;
+            border-left: 1px dashed #dee2e6;
+        }
+
+        .tax-tree > li {
+            margin-bottom: 1rem;
+            -webkit-column-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        .tax-tree li {
+            padding: .1rem 0;
+        }
+
+        .tax-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            background: none;
+            border: 0;
+            margin-left: -.4rem;
+            padding: .15rem .4rem;
+            font-weight: 600;
+            color: #212529;
+            border-radius: .25rem;
+            cursor: pointer;
+        }
+
+        .tax-toggle:hover,
+        .tax-toggle:focus-visible {
+            background: #f1f3f5;
+        }
+
+        .tax-toggle .chevron {
+            display: inline-block;
+            font-size: .65em;
+            color: #6c757d;
+            transition: transform .15s ease;
+        }
+
+        .tax-toggle[aria-expanded="true"] .chevron {
+            transform: rotate(90deg);
+        }
+
+        .tax-desc {
+            margin: 0 0 .25rem 1.7rem;
+            color: #6c757d;
+        }
+
+        .tax-leaf {
+            color: #495057;
+            padding-left: .4rem;
+        }
+
+        .tax-leaf::before {
+            content: "\2013";
+            display: inline-block;
+            width: 1rem;
+            color: #adb5bd;
+        }

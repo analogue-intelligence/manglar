@@ -3,267 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time-based Artworks ~ Dependency Taxonomy</title>
+    <title>P5 Sketches ~ Dependency Taxonomy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/main.css" rel="stylesheet">
 </head>
 <body>
 
 <main class="container py-4">
     <h1>P5 Sketches ~ Dependency Taxonomy</h1>
+    <p class="tax-intro text-muted">
+        A browsable taxonomy of the dependencies that show up in p5.js sketches. Every category starts expanded;
+        collapse the ones you don't need, or use the search box below to filter down to a dependency type.
+    </p>
+
+    <div class="tax-controls">
+        <input type="search" id="tax-search" class="form-control tax-search"
+               placeholder="Search the taxonomy&hellip;" aria-label="Search the taxonomy">
+        <button type="button" id="tax-expand-all" class="btn btn-sm btn-outline-secondary">Expand all</button>
+        <button type="button" id="tax-collapse-all" class="btn btn-sm btn-outline-secondary">Collapse all</button>
+    </div>
+    <p id="tax-no-results" class="tax-no-results d-none">No matching categories found.</p>
 
     <nav aria-label="Dependency taxonomy">
-        <ul>
+        <ul class="tax-tree" id="taxonomy-tree">
             <li>
-                <button class="btn btn-link p-0 align-baseline" type="button"
+                <button class="tax-toggle" type="button"
                         data-bs-toggle="collapse" data-bs-target="#c-app-lib"
-                        aria-expanded="false" aria-controls="c-app-lib">
+                        aria-expanded="true" aria-controls="c-app-lib">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
                     Third-Party Libraries
                 </button>
-                <ul class="collapse" id="c-app-lib">
-                    <li>P5 Libraries</li>
-                    <li>Common JS libraries (e.g., npm)</li>
+                <ul class="collapse show" id="c-app-lib">
+                    <li class="tax-leaf">P5 Libraries</li>
+                    <li class="tax-leaf">Common JS libraries (e.g., via npm)</li>
                 </ul>
             </li>
 
             <li>
-                <button class="btn btn-link p-0 align-baseline" type="button"
+                <button class="tax-toggle" type="button"
                         data-bs-toggle="collapse" data-bs-target="#c-app-ai"
-                        aria-expanded="false" aria-controls="c-app-ai">
+                        aria-expanded="true" aria-controls="c-app-ai">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
                     AI and Machine-Learning Models
                 </button>
-                <ul class="collapse" id="c-app-ai">
+                <ul class="collapse show" id="c-app-ai">
                     <li>
-                        <button class="btn btn-link p-0 align-baseline" type="button"
+                        <button class="tax-toggle" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#c-app-ai-local"
-                                aria-expanded="false" aria-controls="c-app-ai-local">
+                                aria-expanded="true" aria-controls="c-app-ai-local">
+                            <span class="chevron" aria-hidden="true">&#9656;</span>
                             Local models
                         </button>
-                        <ul class="collapse" id="c-app-ai-local">
-                            <li>Computer Vision: OpenCV, MediaPipe</li>
-                            <li>Image Processing</li>
-                            <li>Natural Language Processing (NLP)</li>
-                            <li>Speech Recognition</li>
-                            <li>Machine Learning</li>
-                            <li>Large Language Models: Ollama</li>
+                        <ul class="collapse show" id="c-app-ai-local">
+                            <li class="tax-leaf">Computer Vision: OpenCV, MediaPipe</li>
+                            <li class="tax-leaf">Image Processing</li>
+                            <li class="tax-leaf">Natural Language Processing (NLP)</li>
+                            <li class="tax-leaf">Speech Recognition</li>
+                            <li class="tax-leaf">Machine Learning</li>
+                            <li class="tax-leaf">Large Language Models: Ollama</li>
                         </ul>
                     </li>
                     <li>
-                        <button class="btn btn-link p-0 align-baseline" type="button"
+                        <button class="tax-toggle" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#c-app-ai-remote"
-                                aria-expanded="false" aria-controls="c-app-ai-remote">
+                                aria-expanded="true" aria-controls="c-app-ai-remote">
+                            <span class="chevron" aria-hidden="true">&#9656;</span>
                             Remote models
                         </button>
-                        <ul class="collapse" id="c-app-ai-remote">
-                            <li>Computer Vision: Ultralytics</li>
-                            <li>Natural Language Processing (NLP)</li>
-                            <li>Machine Learning: Hugging Face endpoints</li>
-                            <li>Large Language Models: OpenAI, Anthropic</li>
+                        <ul class="collapse show" id="c-app-ai-remote">
+                            <li class="tax-leaf">Computer Vision: Ultralytics</li>
+                            <li class="tax-leaf">Natural Language Processing (NLP)</li>
+                            <li class="tax-leaf">Machine Learning: Hugging Face endpoints</li>
+                            <li class="tax-leaf">Large Language Models: OpenAI, Anthropic</li>
                         </ul>
                     </li>
                 </ul>
             </li>
 
             <li>
-                <button class="btn btn-link p-0 align-baseline" type="button"
+                <button class="tax-toggle" type="button"
                         data-bs-toggle="collapse" data-bs-target="#c-app-webapi"
-                        aria-expanded="false" aria-controls="c-app-webapi">
+                        aria-expanded="true" aria-controls="c-app-webapi">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
                     Web API endpoints
                 </button>
-                Social media feeds, live weather data
-                <ul class="collapse" id="c-app-webapi">
-                    <li>RESTful APIs</li>
-                    <li>SOAP APIs</li>
-                    <li>GraphQL APIs</li>
-                    <li>JSON APIs</li>
-                    <li>XML APIs</li>
-                    <li>Web Sockets</li>
-                    <li>WebRTC</li>
+                <p class="tax-desc small">Social media feeds, live weather data</p>
+                <ul class="collapse show" id="c-app-webapi">
+                    <li class="tax-leaf">RESTful APIs</li>
+                    <li class="tax-leaf">SOAP APIs</li>
+                    <li class="tax-leaf">GraphQL APIs</li>
+                    <li class="tax-leaf">JSON APIs</li>
+                    <li class="tax-leaf">XML APIs</li>
+                    <li class="tax-leaf">Web Sockets</li>
+                    <li class="tax-leaf">WebRTC</li>
                 </ul>
             </li>
 
             <li>
-                <button class="btn btn-link p-0 align-baseline" type="button"
+                <button class="tax-toggle" type="button"
                         data-bs-toggle="collapse" data-bs-target="#c-app-assets"
-                        aria-expanded="false" aria-controls="c-app-assets">
+                        aria-expanded="true" aria-controls="c-app-assets">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
                     Digital Assets
                 </button>
-                <ul class="collapse" id="c-app-assets">
-                    <li>Codebases</li>
-                    <li>High-resolution textures</li>
-                    <li>3D meshes</li>
-                    <li>3D models</li>
-                    <li>Audio samples</li>
-                    <li>Font files</li>
-                    <li>Images and sprites</li>
-                    <li>Video files</li>
-                    <li>Shader files</li>
-                    <li>SVG files</li>
+                <ul class="collapse show" id="c-app-assets">
+                    <li class="tax-leaf">Codebases</li>
+                    <li class="tax-leaf">High-resolution textures</li>
+                    <li class="tax-leaf">3D meshes</li>
+                    <li class="tax-leaf">3D models</li>
+                    <li class="tax-leaf">Audio samples</li>
+                    <li class="tax-leaf">Font files</li>
+                    <li class="tax-leaf">Images and sprites</li>
+                    <li class="tax-leaf">Video files</li>
+                    <li class="tax-leaf">Shader files</li>
+                    <li class="tax-leaf">SVG files</li>
                 </ul>
             </li>
 
             <li>
-                <button class="btn btn-link p-0 align-baseline" type="button"
+                <button class="tax-toggle" type="button"
                         data-bs-toggle="collapse" data-bs-target="#c-app-config"
-                        aria-expanded="false" aria-controls="c-app-config">
+                        aria-expanded="true" aria-controls="c-app-config">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
                     Configuration and Parameters
                 </button>
-                <ul class="collapse" id="c-app-config">
-                    <li>Configuration files</li>
-                    <li>Environment variables</li>
-                    <li>Runtime parameters</li>
-                    <li>Feature flags</li>
+                <ul class="collapse show" id="c-app-config">
+                    <li class="tax-leaf">Configuration files</li>
+                    <li class="tax-leaf">Environment variables</li>
+                    <li class="tax-leaf">Runtime parameters</li>
                 </ul>
             </li>
 
             <li>
-                <button class="btn btn-link p-0 align-baseline" type="button"
+                <button class="tax-toggle" type="button"
                         data-bs-toggle="collapse" data-bs-target="#c-app-source"
-                        aria-expanded="false" aria-controls="c-app-source">
+                        aria-expanded="true" aria-controls="c-app-source">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
                     Data Sources and Persistence
                 </button>
-                <ul class="collapse" id="c-app-source">
-                    <li>Configuration files</li>
-                    <li>Local datasets</li>
-                    <li>Remote datasets</li>
-                    <li>JSON, CSV, XML, or binary data files</li>
-                    <li>Local databases</li>
-                    <li>Remote databases</li>
+                <ul class="collapse show" id="c-app-source">
+                    <li class="tax-leaf">Local datasets</li>
+                    <li class="tax-leaf">Remote datasets</li>
+                    <li class="tax-leaf">JSON, CSV, XML, or binary data files</li>
+                    <li class="tax-leaf">Local databases</li>
+                    <li class="tax-leaf">Remote databases</li>
                 </ul>
             </li>
 
             <li>
-                <button class="btn btn-link p-0 align-baseline" type="button"
+                <button class="tax-toggle" type="button"
                         data-bs-toggle="collapse" data-bs-target="#c-app-determinism"
-                        aria-expanded="false" aria-controls="c-app-determinism">
+                        aria-expanded="true" aria-controls="c-app-determinism">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
                     Determinism and Generated State
                 </button>
-                <ul class="collapse" id="c-app-determinism">
-                    <li>Configuration files</li>
-                    <li>Random seed</li>
-                    <li>Noise seed</li>
-                    <li>Saved application state</li>
-                    <li>User-generated content</li>
+                <ul class="collapse show" id="c-app-determinism">
+                    <li class="tax-leaf">Configuration files</li>
+                    <li class="tax-leaf">Random seed</li>
+                    <li class="tax-leaf">Noise seed</li>
+                    <li class="tax-leaf">Saved application state</li>
+                    <li class="tax-leaf">User-generated content</li>
                 </ul>
             </li>
 
             <li>
-                <button class="btn btn-link p-0 align-baseline" type="button"
+                <button class="tax-toggle" type="button"
                         data-bs-toggle="collapse" data-bs-target="#c-net-protocols"
-                        aria-expanded="false" aria-controls="c-net-protocols">
+                        aria-expanded="true" aria-controls="c-net-protocols">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
                     Network protocols
                 </button>
-                <ul class="collapse" id="c-net-protocols">
-                    <li>HTTP/HTTPS</li>
-                    <li>FTP</li>
-                    <li>SMTP</li>
-                    <li>DNS</li>
-                    <li>Telnet</li>
-                    <li>SSH</li>
-                    <li>WebSockets</li>
-                    <li>DHCP</li>
-                    <li>MIDI</li>
-                    <li>OSC</li>
-                    <li>Art-Net/DMX</li>
-                    <li>MCP</li>
+                <ul class="collapse show" id="c-net-protocols">
+                    <li class="tax-leaf">HTTP/HTTPS</li>
+                    <li class="tax-leaf">FTP</li>
+                    <li class="tax-leaf">SMTP</li>
+                    <li class="tax-leaf">DNS</li>
+                    <li class="tax-leaf">Telnet</li>
+                    <li class="tax-leaf">SSH</li>
+                    <li class="tax-leaf">WebSockets</li>
+                    <li class="tax-leaf">DHCP</li>
+                    <li class="tax-leaf">MIDI</li>
+                    <li class="tax-leaf">OSC</li>
+                    <li class="tax-leaf">Art-Net/DMX</li>
+                    <li class="tax-leaf">MCP</li>
                 </ul>
             </li>
 
             <li>
-                <button class="btn btn-link p-0 align-baseline" type="button"
+                <button class="tax-toggle" type="button"
                         data-bs-toggle="collapse" data-bs-target="#c-net-hosting"
-                        aria-expanded="false" aria-controls="c-net-hosting">
+                        aria-expanded="true" aria-controls="c-net-hosting">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
                     Hosting and Content Delivery
                 </button>
-                <ul class="collapse" id="c-net-hosting">
-                    <li>Web host or static-site provider</li>
-                    <li>Content delivery network (CDN)</li>
-                    <li>Remote script URLs</li>
-                    <li>Remote asset URLs</li>
-                    <li>CORS configuration</li>
+                <ul class="collapse show" id="c-net-hosting">
+                    <li class="tax-leaf">Web host or static-site provider</li>
+                    <li class="tax-leaf">Content delivery network (CDN)</li>
+                    <li class="tax-leaf">Remote script URLs</li>
+                    <li class="tax-leaf">Remote asset URLs</li>
+                    <li class="tax-leaf">CORS configuration</li>
                 </ul>
             </li>
 
             <li>
-                <button class="btn btn-link p-0 align-baseline" type="button"
+                <button class="tax-toggle" type="button"
                         data-bs-toggle="collapse" data-bs-target="#c-hw-input"
-                        aria-expanded="false" aria-controls="c-hw-input">
+                        aria-expanded="true" aria-controls="c-hw-input">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
                     Interaction
                 </button>
-                <ul class="collapse" id="c-hw-input">
+                <ul class="collapse show" id="c-hw-input">
                     <li>
-                        <button class="btn btn-link p-0 align-baseline" type="button"
+                        <button class="tax-toggle" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#c-hw-input-peripherals"
-                                aria-expanded="false" aria-controls="c-hw-input-peripherals">
+                                aria-expanded="true" aria-controls="c-hw-input-peripherals">
+                            <span class="chevron" aria-hidden="true">&#9656;</span>
                             Standard Peripherals
                         </button>
-                        <ul class="collapse" id="c-hw-input-peripherals">
-                            <li>Mouse</li>
-                            <li>Keyboard</li>
-                            <li>Gamepad</li>
+                        <ul class="collapse show" id="c-hw-input-peripherals">
+                            <li class="tax-leaf">Mouse</li>
+                            <li class="tax-leaf">Keyboard</li>
+                            <li class="tax-leaf">Gamepad</li>
                         </ul>
                     </li>
 
                     <li>
-                        <button class="btn btn-link p-0 align-baseline" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#c-hw-input-sensors"
-                                aria-expanded="false" aria-controls="c-hw-input-sensors">
-                            Sensors
-                        </button>
-                        <ul class="collapse" id="c-hw-input-sensors">
-                            <li>Accelerometer</li>
-                            <li>Gyroscope</li>
-                            <li>Magnetometer</li>
-                            <li>Compass</li>
-                            <li>Barometer</li>
-                            <li>GPS</li>
-                            <li>Depth cameras</li>
-                            <li>Inertial measurement unit (IMU)</li>
-                            <li>Light sensors</li>
-                            <li>Proximity sensors</li>
-                            <li>LiDAR</li>
-                            <li>Radar</li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <button class="btn btn-link p-0 align-baseline" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#c-hw-input-micro"
-                                aria-expanded="false" aria-controls="c-hw-input-micro">
-                            Micro-Controllers
-                        </button>
-                        <ul class="collapse" id="c-hw-input-micro">
-                            <li>Arduino</li>
-                            <li>Raspberry Pi</li>
-                            <li>ESP32</li>
-                            <li>Custom printed circuit boards (PCBs)</li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <button class="btn btn-link p-0 align-baseline" type="button"
+                        <button class="tax-toggle" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#c-hw-input-cameras"
-                                aria-expanded="false" aria-controls="c-hw-input-cameras">
+                                aria-expanded="true" aria-controls="c-hw-input-cameras">
+                            <span class="chevron" aria-hidden="true">&#9656;</span>
                             Cameras and Audio Inputs
                         </button>
-                        <ul class="collapse" id="c-hw-input-cameras">
-                            <li>Webcam or external camera</li>
-                            <li>Microphone</li>
-                            <li>Capture card</li>
+                        <ul class="collapse show" id="c-hw-input-cameras">
+                            <li class="tax-leaf">Webcam or external camera</li>
+                            <li class="tax-leaf">Microphone</li>
                         </ul>
                     </li>
 
                     <li>
-                        <button class="btn btn-link p-0 align-baseline" type="button"
+                        <button class="tax-toggle" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#c-hw-input-touch"
-                                aria-expanded="false" aria-controls="c-hw-input-touch">
+                                aria-expanded="true" aria-controls="c-hw-input-touch">
+                            <span class="chevron" aria-hidden="true">&#9656;</span>
                             Touch and specialized controllers
                         </button>
-                        <ul class="collapse" id="c-hw-input-touch">
-                            <li>Touchscreen</li>
-                            <li>Stylus or graphics tablet</li>
-                            <li>MIDI controller</li>
-                            <li>Motion controller</li>
-                            <li>Eye-tracking device</li>
+                        <ul class="collapse show" id="c-hw-input-touch">
+                            <li class="tax-leaf">Touchscreen</li>
+                            <li class="tax-leaf">Stylus or graphics tablet</li>
+                            <li class="tax-leaf">MIDI controller</li>
+                            <li class="tax-leaf">Motion controller</li>
+                            <li class="tax-leaf">Eye-tracking device</li>
                         </ul>
                     </li>
                 </ul>
@@ -274,5 +263,6 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/main.js"></script>
 </body>
 </html>
