@@ -12,8 +12,15 @@
 <main class="container py-4">
     <h1>P5 Sketches ~ Dependency Taxonomy</h1>
     <p class="tax-intro text-muted">
-        A browsable taxonomy of the dependencies that show up in p5.js sketches. Every category starts expanded;
-        collapse the ones you don't need, or use the search box below to filter down to a dependency type.
+        A browsable taxonomy of the dependencies that show up in p5.js sketches. Top-level categories start
+        expanded; their sub-categories start collapsed. Click one to drill in or use the search box below
+        to filter down to a dependency type.
+    </p>
+
+    <p class="tax-intro text-muted">
+        We acknowledge that p5 offers different possibilities for generative art.
+        However, the taxonomy below is focused on p5.js sketches that are displayed on a screen or projector.
+        Therefore, physical computing aspects beyond the ones described below are not considered.
     </p>
 
     <div class="tax-controls">
@@ -33,15 +40,16 @@
                     <span class="chevron" aria-hidden="true">&#9656;</span>
                     Third-Party Libraries
                 </button>
+                <p class="tax-desc small">External code libraries the sketch imports to extend p5.js with extra functionality.</p>
                 <ul class="collapse show" id="c-app-lib">
                     <li>
                         <button class="tax-toggle" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#c-app-lib-p5"
-                                aria-expanded="true" aria-controls="c-app-lib-p5">
+                                aria-expanded="false" aria-controls="c-app-lib-p5">
                             <span class="chevron" aria-hidden="true">&#9656;</span>
                             P5 Libraries
                         </button>
-                        <ul class="collapse show" id="c-app-lib-p5">
+                        <ul class="collapse" id="c-app-lib-p5">
                             <li class="tax-leaf">p5.sound</li>
                             <li class="tax-leaf">p5.capture</li>
                         </ul>
@@ -49,11 +57,11 @@
                     <li>
                         <button class="tax-toggle" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#c-app-lib-js"
-                                aria-expanded="true" aria-controls="c-app-lib-js">
+                                aria-expanded="false" aria-controls="c-app-lib-js">
                             <span class="chevron" aria-hidden="true">&#9656;</span>
                             Common JS libraries
                         </button>
-                        <ul class="collapse show" id="c-app-lib-js">
+                        <ul class="collapse" id="c-app-lib-js">
                             <li class="tax-leaf">semver</li>
                             <li class="tax-leaf">@babel/traverse</li>
                         </ul>
@@ -68,15 +76,16 @@
                     <span class="chevron" aria-hidden="true">&#9656;</span>
                     AI and Machine-Learning Models
                 </button>
+                <p class="tax-desc small">Models or inference services the sketch relies on to generate, recognize, or transform content.</p>
                 <ul class="collapse show" id="c-app-ai">
                     <li>
                         <button class="tax-toggle" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#c-app-ai-local"
-                                aria-expanded="true" aria-controls="c-app-ai-local">
+                                aria-expanded="false" aria-controls="c-app-ai-local">
                             <span class="chevron" aria-hidden="true">&#9656;</span>
                             Local models
                         </button>
-                        <ul class="collapse show" id="c-app-ai-local">
+                        <ul class="collapse" id="c-app-ai-local">
                             <li class="tax-leaf">Computer Vision: OpenCV, MediaPipe</li>
                             <li class="tax-leaf">Image Processing</li>
                             <li class="tax-leaf">Natural Language Processing (NLP)</li>
@@ -88,11 +97,11 @@
                     <li>
                         <button class="tax-toggle" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#c-app-ai-remote"
-                                aria-expanded="true" aria-controls="c-app-ai-remote">
+                                aria-expanded="false" aria-controls="c-app-ai-remote">
                             <span class="chevron" aria-hidden="true">&#9656;</span>
                             Remote models
                         </button>
-                        <ul class="collapse show" id="c-app-ai-remote">
+                        <ul class="collapse" id="c-app-ai-remote">
                             <li class="tax-leaf">Computer Vision: Ultralytics</li>
                             <li class="tax-leaf">Natural Language Processing (NLP)</li>
                             <li class="tax-leaf">Machine Learning: Hugging Face endpoints</li>
@@ -109,7 +118,7 @@
                     <span class="chevron" aria-hidden="true">&#9656;</span>
                     Web API endpoints
                 </button>
-                <p class="tax-desc small">Social media feeds, live weather data</p>
+                <p class="tax-desc small">External web services the sketch queries for live or third-party data, such as social feeds or weather.</p>
                 <ul class="collapse show" id="c-app-webapi">
                     <li class="tax-leaf">RESTful APIs</li>
                     <li class="tax-leaf">SOAP APIs</li>
@@ -128,6 +137,7 @@
                     <span class="chevron" aria-hidden="true">&#9656;</span>
                     Digital Assets
                 </button>
+                <p class="tax-desc small">Media files the sketch loads and renders, such as images, audio, or 3D models.</p>
                 <ul class="collapse show" id="c-app-assets">
                     <li class="tax-leaf">Codebases</li>
                     <li class="tax-leaf">High-resolution textures</li>
@@ -149,6 +159,7 @@
                     <span class="chevron" aria-hidden="true">&#9656;</span>
                     Configuration and Parameters
                 </button>
+                <p class="tax-desc small">Settings that shape the sketch's behavior without being hard-coded into it.</p>
                 <ul class="collapse show" id="c-app-config">
                     <li class="tax-leaf">Configuration files</li>
                     <li class="tax-leaf">Environment variables</li>
@@ -163,6 +174,7 @@
                     <span class="chevron" aria-hidden="true">&#9656;</span>
                     Data Sources and Persistence
                 </button>
+                <p class="tax-desc small">Where the sketch reads its input from and where it stores its output or state.</p>
                 <ul class="collapse show" id="c-app-source">
                     <li class="tax-leaf">Local datasets (JSON, CSV, XML, or binary data files)</li>
                     <li class="tax-leaf">Remote datasets (JSON, CSV, XML, or binary data files)</li>
@@ -178,6 +190,7 @@
                     <span class="chevron" aria-hidden="true">&#9656;</span>
                     Determinism and Generated State
                 </button>
+                <p class="tax-desc small">What makes the sketch's output reproducible or unique from one run to the next.</p>
                 <ul class="collapse show" id="c-app-determinism">
                     <li class="tax-leaf">Configuration files</li>
                     <li class="tax-leaf">Random seed</li>
@@ -194,6 +207,7 @@
                     <span class="chevron" aria-hidden="true">&#9656;</span>
                     Internet Access Requirement
                 </button>
+                <p class="tax-desc small">How much the sketch depends on a live internet connection to load or run.</p>
                 <ul class="collapse show" id="c-net-internet">
                     <li class="tax-leaf">Fully offline (no internet required)</li>
                     <li class="tax-leaf">Internet required at load time only</li>
@@ -209,6 +223,7 @@
                     <span class="chevron" aria-hidden="true">&#9656;</span>
                     Network protocols
                 </button>
+                <p class="tax-desc small">The communication protocols the sketch uses to exchange data over a network.</p>
                 <ul class="collapse show" id="c-net-protocols">
                     <li class="tax-leaf">HTTP/HTTPS</li>
                     <li class="tax-leaf">FTP</li>
@@ -232,6 +247,7 @@
                     <span class="chevron" aria-hidden="true">&#9656;</span>
                     Hosting and Content Delivery
                 </button>
+                <p class="tax-desc small">Where the sketch and its assets are served from on the web.</p>
                 <ul class="collapse show" id="c-net-hosting">
                     <li class="tax-leaf">Web host or static-site provider</li>
                     <li class="tax-leaf">Content delivery network (CDN)</li>
@@ -248,15 +264,16 @@
                     <span class="chevron" aria-hidden="true">&#9656;</span>
                     Interaction
                 </button>
+                <p class="tax-desc small">The physical devices a viewer uses to interact with the sketch.</p>
                 <ul class="collapse show" id="c-hw-input">
                     <li>
                         <button class="tax-toggle" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#c-hw-input-peripherals"
-                                aria-expanded="true" aria-controls="c-hw-input-peripherals">
+                                aria-expanded="false" aria-controls="c-hw-input-peripherals">
                             <span class="chevron" aria-hidden="true">&#9656;</span>
                             Standard Peripherals
                         </button>
-                        <ul class="collapse show" id="c-hw-input-peripherals">
+                        <ul class="collapse" id="c-hw-input-peripherals">
                             <li class="tax-leaf">Mouse</li>
                             <li class="tax-leaf">Keyboard</li>
                             <li class="tax-leaf">Gamepad</li>
@@ -266,11 +283,11 @@
                     <li>
                         <button class="tax-toggle" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#c-hw-input-cameras"
-                                aria-expanded="true" aria-controls="c-hw-input-cameras">
+                                aria-expanded="false" aria-controls="c-hw-input-cameras">
                             <span class="chevron" aria-hidden="true">&#9656;</span>
                             Cameras and Audio Inputs
                         </button>
-                        <ul class="collapse show" id="c-hw-input-cameras">
+                        <ul class="collapse" id="c-hw-input-cameras">
                             <li class="tax-leaf">Webcam or external camera</li>
                             <li class="tax-leaf">Microphone</li>
                         </ul>
@@ -279,11 +296,11 @@
                     <li>
                         <button class="tax-toggle" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#c-hw-input-touch"
-                                aria-expanded="true" aria-controls="c-hw-input-touch">
+                                aria-expanded="false" aria-controls="c-hw-input-touch">
                             <span class="chevron" aria-hidden="true">&#9656;</span>
                             Touch and specialized controllers
                         </button>
-                        <ul class="collapse show" id="c-hw-input-touch">
+                        <ul class="collapse" id="c-hw-input-touch">
                             <li class="tax-leaf">Touchscreen</li>
                             <li class="tax-leaf">Stylus or graphics tablet</li>
                             <li class="tax-leaf">MIDI controller</li>
