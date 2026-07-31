@@ -1,5 +1,19 @@
 (function () {
     var tree = document.getElementById('taxonomy-tree');
+
+    function shuffleTopLevelCategories(container) {
+        var items = Array.prototype.slice.call(container.children);
+        for (var i = items.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = items[i];
+            items[i] = items[j];
+            items[j] = tmp;
+        }
+        items.forEach(function (li) { container.appendChild(li); });
+    }
+
+    shuffleTopLevelCategories(tree);
+
     var DEFAULT_OPEN = new Set(Array.prototype.map.call(
         tree.querySelectorAll('ul.collapse.show'),
         function (el) { return el.id; }

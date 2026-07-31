@@ -42,8 +42,8 @@
                 </button>
                 <p class="tax-desc small">External code libraries the sketch imports to extend p5.js with extra functionality.</p>
                 <ul class="collapse show" id="c-app-lib">
-                    <li class="tax-leaf">P5 Libraries (e.g., p5.sound and p5.capture )</li>
                     <li class="tax-leaf">Common JS libraries (e.g., semver and @babel/traverse)</li>
+                    <li class="tax-leaf">P5 Libraries (e.g., p5.sound and p5.capture )</li>
 <!--                    <li>-->
 <!--                        <button class="tax-toggle" type="button"-->
 <!--                                data-bs-toggle="collapse" data-bs-target="#c-app-lib-p5"-->
@@ -91,9 +91,9 @@
                             <li class="tax-leaf">Computer Vision (e.g., ml5.js and MediaPipe)</li>
 <!--                            <li class="tax-leaf">Image Processing</li>-->
 <!--                            <li class="tax-leaf">Natural Language Processing (NLP)</li>-->
-                            <li class="tax-leaf">Speech Recognition</li>
-                            <li class="tax-leaf">Machine Learning (inc. NLP)</li>
                             <li class="tax-leaf">Large Language Models: Ollama</li>
+                            <li class="tax-leaf">Machine Learning (inc. NLP)</li>
+                            <li class="tax-leaf">Speech Recognition</li>
                         </ul>
                     </li>
                     <li>
@@ -106,8 +106,8 @@
                         <ul class="collapse" id="c-app-ai-remote">
                             <li class="tax-leaf">Computer Vision: Ultralytics</li>
 <!--                            <li class="tax-leaf">Natural Language Processing (NLP)</li>-->
-                            <li class="tax-leaf">Machine Learning (inc. NLP): Hugging Face endpoints</li>
                             <li class="tax-leaf">Large Language Models: OpenAI, Anthropic</li>
+                            <li class="tax-leaf">Machine Learning (inc. NLP): Hugging Face endpoints</li>
                         </ul>
                     </li>
                 </ul>
@@ -122,13 +122,13 @@
                 </button>
                 <p class="tax-desc small">External web services the sketch queries for live or third-party data, such as social feeds or weather.</p>
                 <ul class="collapse show" id="c-app-webapi">
-                    <li class="tax-leaf">RESTful APIs</li>
-                    <li class="tax-leaf">SOAP APIs</li>
                     <li class="tax-leaf">GraphQL APIs</li>
                     <li class="tax-leaf">JSON APIs</li>
-                    <li class="tax-leaf">XML APIs</li>
+                    <li class="tax-leaf">RESTful APIs</li>
+                    <li class="tax-leaf">SOAP APIs</li>
                     <li class="tax-leaf">Web Sockets</li>
                     <li class="tax-leaf">WebRTC</li>
+                    <li class="tax-leaf">XML APIs</li>
                 </ul>
             </li>
 
@@ -141,15 +141,15 @@
                 </button>
                 <p class="tax-desc small">Media files the sketch loads and renders, such as images, audio, or 3D models.</p>
                 <ul class="collapse show" id="c-app-assets">
-                    <li class="tax-leaf">Codebases</li>
-                    <li class="tax-leaf">High-resolution textures</li>
                     <li class="tax-leaf">3D meshes and models</li>
                     <li class="tax-leaf">Audio samples</li>
+                    <li class="tax-leaf">Codebases</li>
                     <li class="tax-leaf">Font files</li>
+                    <li class="tax-leaf">High-resolution textures</li>
                     <li class="tax-leaf">Images and sprites</li>
-                    <li class="tax-leaf">Video files</li>
                     <li class="tax-leaf">Shader files</li>
                     <li class="tax-leaf">SVG files</li>
+                    <li class="tax-leaf">Video files</li>
                 </ul>
             </li>
 
@@ -177,10 +177,10 @@
                 </button>
                 <p class="tax-desc small">Where the sketch reads its input from and where it stores its output or state.</p>
                 <ul class="collapse show" id="c-app-source">
-                    <li class="tax-leaf">Local datasets (JSON, CSV, XML, or binary data files)</li>
-                    <li class="tax-leaf">Remote datasets (JSON, CSV, XML, or binary data files)</li>
                     <li class="tax-leaf">Local databases</li>
+                    <li class="tax-leaf">Local datasets (JSON, CSV, XML, or binary data files)</li>
                     <li class="tax-leaf">Remote databases</li>
+                    <li class="tax-leaf">Remote datasets (JSON, CSV, XML, or binary data files)</li>
                 </ul>
             </li>
 
@@ -194,8 +194,8 @@
                 <p class="tax-desc small">What makes the sketch's output reproducible or unique from one run to the next.</p>
                 <ul class="collapse show" id="c-app-determinism">
                     <li class="tax-leaf">Configuration files</li>
-                    <li class="tax-leaf">Random seed</li>
                     <li class="tax-leaf">Noise seed</li>
+                    <li class="tax-leaf">Random seed</li>
                     <li class="tax-leaf">Saved application state</li>
                     <li class="tax-leaf">User-generated content</li>
                 </ul>
@@ -210,10 +210,10 @@
                 </button>
                 <p class="tax-desc small">How much the sketch depends on a live internet connection to load or run.</p>
                 <ul class="collapse show" id="c-net-internet">
+                    <li class="tax-leaf">Degrades gracefully without internet</li>
                     <li class="tax-leaf">Fully offline (no internet required)</li>
                     <li class="tax-leaf">Internet required at load time only</li>
                     <li class="tax-leaf">Internet required continuously during execution</li>
-                    <li class="tax-leaf">Degrades gracefully without internet</li>
                 </ul>
             </li>
 
@@ -226,18 +226,18 @@
                 </button>
                 <p class="tax-desc small">The communication protocols the sketch uses to exchange data over a network.</p>
                 <ul class="collapse show" id="c-net-protocols">
-                    <li class="tax-leaf">HTTP/HTTPS</li>
-                    <li class="tax-leaf">FTP</li>
-                    <li class="tax-leaf">SMTP</li>
-                    <li class="tax-leaf">DNS</li>
-                    <li class="tax-leaf">Telnet</li>
-                    <li class="tax-leaf">SSH</li>
-                    <li class="tax-leaf">WebSockets</li>
+                    <li class="tax-leaf">Art-Net/DMX</li>
                     <li class="tax-leaf">DHCP</li>
+                    <li class="tax-leaf">DNS</li>
+                    <li class="tax-leaf">FTP</li>
+                    <li class="tax-leaf">HTTP/HTTPS</li>
+                    <li class="tax-leaf">MCP</li>
                     <li class="tax-leaf">MIDI</li>
                     <li class="tax-leaf">OSC</li>
-                    <li class="tax-leaf">Art-Net/DMX</li>
-                    <li class="tax-leaf">MCP</li>
+                    <li class="tax-leaf">SMTP</li>
+                    <li class="tax-leaf">SSH</li>
+                    <li class="tax-leaf">Telnet</li>
+                    <li class="tax-leaf">WebSockets</li>
                 </ul>
             </li>
 
@@ -250,11 +250,11 @@
                 </button>
                 <p class="tax-desc small">Where the sketch and its assets are served from on the web.</p>
                 <ul class="collapse show" id="c-net-hosting">
-                    <li class="tax-leaf">Web host or static-site provider</li>
                     <li class="tax-leaf">Content delivery network (CDN)</li>
-                    <li class="tax-leaf">Remote script URLs</li>
-                    <li class="tax-leaf">Remote asset URLs</li>
                     <li class="tax-leaf">CORS configuration</li>
+                    <li class="tax-leaf">Remote asset URLs</li>
+                    <li class="tax-leaf">Remote script URLs</li>
+                    <li class="tax-leaf">Web host or static-site provider</li>
                 </ul>
             </li>
 
@@ -267,13 +267,13 @@
                 </button>
                 <p class="tax-desc small">The physical devices a viewer uses to interact with the sketch.</p>
                 <ul class="collapse show" id="c-hw-input">
-                    <li class="tax-leaf">Mouse</li>
-                    <li class="tax-leaf">Keyboard</li>
-                    <li class="tax-leaf">Gamepad</li>
-                    <li class="tax-leaf">Webcam or external camera</li>
-                    <li class="tax-leaf">Microphone</li>
                     <li class="tax-leaf">Eye-tracking device</li>
+                    <li class="tax-leaf">Gamepad</li>
+                    <li class="tax-leaf">Keyboard</li>
+                    <li class="tax-leaf">Microphone</li>
                     <li class="tax-leaf">MIDI controller</li>
+                    <li class="tax-leaf">Mouse</li>
+                    <li class="tax-leaf">Webcam or external camera</li>
 <!--                    <li>-->
 <!--                        <button class="tax-toggle" type="button"-->
 <!--                                data-bs-toggle="collapse" data-bs-target="#c-hw-input-peripherals"-->
