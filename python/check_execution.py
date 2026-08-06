@@ -6,12 +6,14 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+SCREENSHOT_DIR = (BASE_DIR /"error_screenshots").resolve()
+    # Path("./error_screenshots"))
 
 WEBSITE_FOLDERS = [
      (BASE_DIR / "../data/Galaxy").resolve()
 ]
 
-TIMEOUT = 1500
+TIMEOUT = 1000
 
 def find_free_port() -> int:
     """Finds an unused network port dynamically."""
@@ -21,7 +23,7 @@ def find_free_port() -> int:
 
 
 
-def check_website(url: str, page):
+def check_website(url: str, page, folder_path):
     errors = []
 
     def handle_js_errors(err):
@@ -50,11 +52,19 @@ def check_website(url: str, page):
             print(f"❌ Found {len(errors)} issue(s):")
             for err in errors:
                 print(f"   - {err}")
+            take_screenshot(folder_path, page)
         else:
             print("\t\t✅ No errors detected.")
 
     except Exception as e:
         print(f"\t\t❌ Load error: {e}")
+
+
+def take_screenshot(folder_path, page):
+    SCREENSHOT_DIR.mkdir(exist_ok=True)
+    screenshot_path = SCREENSHOT_DIR / f"{folder_path.name}_error.png"
+    page.screenshot(path=str(screenshot_path), full_page=True)
+    print(f"📸 Saved screenshot: {screenshot_path}")
 
 
 def run_sketch_in_browser(folder_path: Path, headless: bool = False):
@@ -83,7 +93,7 @@ def run_sketch_in_browser(folder_path: Path, headless: bool = False):
             context = browser.new_context()
             page = context.new_page()
 
-            check_website(target_url, page)
+            check_website(target_url, page, folder_path)
 
             context.close()
             server.shutdown()
