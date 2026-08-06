@@ -85,7 +85,6 @@ def run_sketch_in_browser(folder_path: Path, headless: bool = False):
 
             check_website(target_url, page)
 
-            # Cleanup tab and shutdown the HTTP server for this folder
             context.close()
             server.shutdown()
 
