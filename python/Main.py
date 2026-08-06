@@ -8,6 +8,8 @@ import re
 import pandas as pd
 from pandas import DataFrame
 
+from check_execution import run_sketch_in_browser
+
 
 @dataclass
 class Sketch:
@@ -51,7 +53,7 @@ def export_dependencies_to_df(sketches):
 
     if not df.empty:
         os.makedirs(Path("../out"), exist_ok=True)
-        df.to_csv("../out/dependencies.csv", index=False)
+        df.to_csv("../out/html_dependencies.csv", index=False)
 
 
 def create_df(sketches) -> DataFrame:
@@ -88,6 +90,11 @@ def main(pth: str):
     export_dependencies_to_df(sketches)
 
 
+def execute_sketch(sketch_folder: Path):
+    print(f"\t 🏭executing sketch: {sketch_folder}")
+    run_sketch_in_browser(sketch_folder, headless=False)
+
+
 def detect_dependencies(pth: str):
     sketches: list[Sketch] = []
     p: Path = Path(pth)
@@ -97,11 +104,14 @@ def detect_dependencies(pth: str):
                 # let's get the parent folder name
                 sketch_folder: Path = Path(root)
                 print(f"Sketch: {sketch_folder}")
-                print(f"Detecting dependencies...")
+                print(f"\tDetecting dependencies...")
 
                 fp_sketch = sketch_folder.joinpath(file)
                 dependencies = extract_dependencies(fp_sketch)
                 sketches.append(Sketch(file, fp_sketch, dependencies))
+
+                execute_sketch(sketch_folder)
+                print("---------------------------")
 
     return sketches
 
