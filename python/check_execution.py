@@ -11,6 +11,8 @@ WEBSITE_FOLDERS = [
      (BASE_DIR / "../data/Galaxy").resolve()
 ]
 
+TIMEOUT = 1500
+
 def find_free_port() -> int:
     """Finds an unused network port dynamically."""
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -42,7 +44,7 @@ def check_website(url: str, page):
     try:
         page.goto(url, wait_until="networkidle")
 
-        page.wait_for_timeout(1500)
+        page.wait_for_timeout(TIMEOUT)
 
         if errors:
             print(f"❌ Found {len(errors)} issue(s):")
