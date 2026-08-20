@@ -50,7 +50,9 @@ const sketches = new Map();
 async function main() {
     const artfolder = "../data/"
     await traverseFolder(artfolder);
-    console.log(sketches);
+    await exportMapToCSV(sketches);
+    // console.log(sketches);
+    console.log("Done!");
 }
 
 function addSketchDependency(filepath, dependencyName) {
@@ -61,6 +63,28 @@ function addSketchDependency(filepath, dependencyName) {
     }
     sketches.get(sketchName).dependencies.add(dependencyName);
     // console.log(sketches.get(sketchName));
+}
+
+async function exportMapToCSV(map, filePath = '../out/js_dependencies.csv') {
+  let csvContent = 'parent_folder,url,dependency_name\n';//,file_name
+
+  for (const [key, value] of map.entries()) {
+    // Sanitize quotes and wrap in quotes to preserve formatting and commas
+    const safeKey = `"${String(key).replace(/"/g, '""')}"`;
+    const url = `"${String(value.url).replace(/"/g, '""')}"`;
+    // const deps = `"${String(value.dependencies).replace(/"/g, '""')}"`;
+
+    const jsonArray = JSON.stringify([...value.dependencies]);
+
+    csvContent += `${key},${value.url},"[${[...value.dependencies]}]"\n`;
+  }
+
+  try {
+    await fs.writeFile(filePath, csvContent, 'utf-8');
+    console.log(`CSV file written successfully to ${filePath}`);
+  } catch (error) {
+    console.error('Error writing CSV file:', error);
+  }
 }
 
 function processAST(filepath, ast) {
