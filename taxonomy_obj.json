@@ -1,0 +1,158 @@
+{
+  "meta": {
+    "sketchName": "interactive-particle-system",
+    "version": "0.0.1",
+    "path": "sketch2384033/mySketch.js"
+  },
+  "dependencies": [
+    {
+      "id": "hw-001",
+      "category": "Hardware and Peripherals",
+      "type": "Camera input",
+      "name": "webcam",
+      "value": "VIDEO",
+      "dataType": "stream"
+    },
+    {
+      "id": "hw-002",
+      "category": "Hardware and Peripherals",
+      "type": "Audio input",
+      "name": "microphone",
+      "value": "p5.AudioIn",
+      "dataType": "stream"
+    },
+    {
+      "id": "sw-001",
+      "category": "Software and Code Execution",
+      "type": "External JavaScript libraries",
+      "name": "p5.sound",
+      "value": "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js",
+      "dataType": "url"
+    },
+    {
+      "id": "sw-002",
+      "category": "Software and Code Execution",
+      "type": "Web APIs",
+      "name": "geolocationAPI",
+      "value": "navigator.geolocation",
+      "dataType": "string"
+    },
+    {
+      "id": "ast-001",
+      "category": "External Assets and Data Sources",
+      "type": "Media files",
+      "name": "spriteSheet",
+      "value": "assets/player.png",
+      "dataType": "file"
+    },
+    {
+      "id": "ast-002",
+      "category": "External Assets and Data Sources",
+      "type": "Fonts",
+      "name": "headerFont",
+      "value": "assets/Roboto-Bold.ttf",
+      "dataType": "file"
+    },
+    {
+      "id": "dep-001",
+      "category": "Configuration and Parameters Settings",
+      "type": "Configuration files",
+      "name": "sketchConfig",
+      "value": "sketch2384033/endpoints.txt",
+      "dataType": "file"
+    },
+    {
+      "id": "dep-002",
+      "category": "Configuration and Parameters Settings",
+      "type": "Environment variables",
+      "name": "USER_ID",
+      "value": null,
+      "dataType": "string"
+    },
+    {
+      "id": "dep-004",
+      "category": "Configuration and Parameters Settings",
+      "type": "Runtime parameters",
+      "name": "frameRateLimit",
+      "value": 60,
+      "dataType": "number"
+    },
+    {
+      "id": "dep-005",
+      "category": "Configuration and Parameters Settings",
+      "type": "Noise seed",
+      "name": "perlinSeed",
+      "value": 100,
+      "dataType": "number"
+    },
+    {
+      "id": "dep-006",
+      "category": "Configuration and Parameters Settings",
+      "type": "Random seed",
+      "name": "globalRandomSeed",
+      "value": 42,
+      "dataType": "number"
+    },
+    {
+      "id": "dep-007",
+      "category": "Configuration and Parameters Settings",
+      "type": "Saved application state",
+      "name": "previousSession",
+      "value": "state.json",
+      "dataType": "file"
+    },
+    {
+      "id": "dep-008",
+      "category": "Configuration and Parameters Settings",
+      "type": "User-generated content",
+      "name": "uploadedImage",
+      "value": "user_avatar.png",
+      "dataType": "file"
+    },
+    {
+      "id": "dep-401",
+      "category": "Network protocols",
+      "type": "WebSocket",
+      "name": "realtimeServer",
+      "value": "wss://sketch-socket.example.com",
+      "dataType": "url"
+    },
+    {
+      "id": "dep-402",
+      "category": "Network protocols",
+      "type": "HTTP/HTTPS",
+      "name": "apiProtocol",
+      "value": "HTTPS",
+      "dataType": "string"
+    },
+    {
+      "id": "dep-201",
+      "category": "AI and Machine-Learning Models",
+      "type": "Local model weights",
+      "name": "ml5PoseNetModel",
+      "value": "models/posenet-model.json",
+      "dataType": "file"
+    },
+    {
+      "id": "dep-202",
+      "category": "AI and Machine-Learning Models",
+      "type": "Hosted inference API",
+      "name": "openAiEndpoint",
+      "value": "https://api.openai.com/v1/embeddings",
+      "dataType": "url"
+    },
+    {
+      "id": "dep-301",
+      "category": "Hosting and Content Delivery",
+      "type": "CDN dependency",
+      "name": "p5SoundCDN",
+      "value": "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js",
+      "dataType": "url"
+    },
+    {
+      "id": "dep-101",
+      "category": "Internet Access Requirement",
+      "type": "Fully offline"
+    }
+  ]
+}

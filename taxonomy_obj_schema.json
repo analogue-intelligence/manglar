@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "sketchName": "interactive-particle-system",
+    "version": "0.0.1",
+    "path": "sketch/x/y/z/mySketch.js"
+  },
+  "dependencies": [
+    {
+      "id": "dep-001",
+      "category": "EXACT_CATEGORY_NAME",
+      "type": "EXACT_TAXONOMY_SUBITEM",
+      "name": "identifierName",
+      "value": "example_value",
+      "dataType": "string | number | boolean | file | url | stream | object | array"
+    }
+  ]
+}
