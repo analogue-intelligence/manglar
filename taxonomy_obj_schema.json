@@ -11,7 +11,9 @@
       "type": "EXACT_TAXONOMY_SUBITEM",
       "name": "identifierName",
       "value": "example_value",
-      "dataType": "string | number | boolean | file | url | stream | object | array"
+      "dataType": "string | number | boolean | file | url | stream | object | array",
+      "detectedIn": ["js", "html"],
+      "detectedFile": ["sketch/x/y/z/mySketch.js", "sketch/x/y/z/index.html"]
     }
   ]
 }

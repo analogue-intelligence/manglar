@@ -37,7 +37,10 @@ class Sketch {
 
         if (!this.dependencies.has(key)) {
             this.dependencies.set(key, dependency);
+            return;
         }
+
+        this.dependencies.set(key, mergeDependencyProvenance(this.dependencies.get(key), dependency));
     }
 
     toJSON() {
@@ -94,13 +97,19 @@ async function main() {
 
 function addSketchDependency(filepath, dependency) {
     const sketchName = getSketchName(filepath);
+    const sketchKey = getSketchKey(filepath);
     const sketchPath = getRelativeSketchPath(filepath);
 
-    if (!sketches.has(sketchName)) {
-        sketches.set(sketchName, new Sketch(sketchName, sketchPath));
+    if (!sketches.has(sketchKey)) {
+        sketches.set(sketchKey, new Sketch(sketchName, sketchPath));
     }
 
-    sketches.get(sketchName).addDependency(dependency);
+    const dependencyWithProvenance = {
+        ...dependency,
+        detectedFile: [sketchPath]
+    };
+
+    sketches.get(sketchKey).addDependency(dependencyWithProvenance);
 }
 
 async function exportMapToJSON(map, filePath) {
@@ -173,6 +182,10 @@ function getSketchName(filepath) {
     return filepath.split('/').at(-2);
 }
 
+function getSketchKey(filepath) {
+    return path.dirname(getRelativeSketchPath(filepath));
+}
+
 function getRelativeSketchPath(filepath) {
     return path.relative(path.resolve(__dirname, "../data"), filepath);
 }
@@ -203,7 +216,9 @@ function createThirdPartyDependency(name) {
         type: inferThirdPartyType(name),
         name,
         value: name,
-        dataType: 'string'
+        dataType: 'string',
+        detectedIn: ['js'],
+        detectedFile: []
     };
 }
 
@@ -236,4 +251,16 @@ function compareDependencies(a, b) {
         a.name.localeCompare(b.name) ||
         a.value.localeCompare(b.value)
     );
+}
+
+function mergeDependencyProvenance(existing, incoming) {
+    return {
+        ...existing,
+        detectedIn: mergeUniqueArrays(existing.detectedIn, incoming.detectedIn),
+        detectedFile: mergeUniqueArrays(existing.detectedFile, incoming.detectedFile)
+    };
+}
+
+function mergeUniqueArrays(left = [], right = []) {
+    return [...new Set([...(left || []), ...(right || [])])];
 }
