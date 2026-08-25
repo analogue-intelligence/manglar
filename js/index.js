@@ -1,23 +1,61 @@
 import * as acorn from "acorn"
 import * as recast from "recast";
 import * as fs from 'node:fs/promises';
-// import { Visitor } from 'recast';
 import * as path from 'path'
+import { builtinModules } from 'node:module';
+import { fileURLToPath } from 'node:url';
 
-let acornconfig = {
-    ecmaVersion: 9,
-    sourceType: "script",
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const acornconfig = {
+    ecmaVersion: "latest",
+    sourceType: "module",
     allowReturnOutsideFunction: true
 }
 
 const KNOWN_GLOBALS = ['ml5', 'matter', 'dat', 'Tone', 'p5'];
+const THIRD_PARTY_LIBRARY_TYPES = {
+    p5: 'P5 Libraries',
+    generic: 'Common JS libraries'
+};
+
+const BUILTIN_MODULES = new Set(
+    builtinModules.flatMap((name) => [name, name.replace(/^node:/, '')])
+);
 
 
 class Sketch {
     constructor(name, url) {
         this.name = name;
         this.url = url;
-        this.dependencies = new Set();
+        this.dependencies = new Map();
+    }
+
+    addDependency(dependency) {
+        const key = dependencyKey(dependency);
+
+        if (!this.dependencies.has(key)) {
+            this.dependencies.set(key, dependency);
+        }
+    }
+
+    toJSON() {
+        const dependencies = [...this.dependencies.values()]
+            .sort(compareDependencies)
+            .map((dependency, index) => ({
+                id: `dep-${String(index + 1).padStart(3, '0')}`,
+                ...dependency
+            }));
+
+        return {
+            meta: {
+                sketchName: this.name,
+                version: "0.0.1",
+                path: this.url
+            },
+            dependencies
+        };
     }
 }
 
@@ -48,60 +86,60 @@ async function traverseFolder(artfolder) {
 const sketches = new Map();
 
 async function main() {
-    const artfolder = "../data/"
+    const artfolder = path.resolve(__dirname, "../data");
     await traverseFolder(artfolder);
-    await exportMapToCSV(sketches);
-    // console.log(sketches);
+    await exportMapToJSON(sketches, path.resolve(__dirname, "../out/js_dependencies.json"));
     console.log("Done!");
 }
 
-function addSketchDependency(filepath, dependencyName) {
+function addSketchDependency(filepath, dependency) {
     const sketchName = getSketchName(filepath);
+    const sketchPath = getRelativeSketchPath(filepath);
 
     if (!sketches.has(sketchName)) {
-        sketches.set(sketchName, new Sketch(sketchName, filepath));
+        sketches.set(sketchName, new Sketch(sketchName, sketchPath));
     }
-    sketches.get(sketchName).dependencies.add(dependencyName);
-    // console.log(sketches.get(sketchName));
+
+    sketches.get(sketchName).addDependency(dependency);
 }
 
-async function exportMapToCSV(map, filePath = '../out/js_dependencies.csv') {
-  let csvContent = 'parent_folder,url,dependency_name\n';//,file_name
+async function exportMapToJSON(map, filePath) {
+    const payload = [...map.entries()]
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([, sketch]) => sketch.toJSON());
 
-  for (const [key, value] of map.entries()) {
-    // Sanitize quotes and wrap in quotes to preserve formatting and commas
-    const safeKey = `"${String(key).replace(/"/g, '""')}"`;
-    const url = `"${String(value.url).replace(/"/g, '""')}"`;
-    // const deps = `"${String(value.dependencies).replace(/"/g, '""')}"`;
-
-    const jsonArray = JSON.stringify([...value.dependencies]);
-
-    csvContent += `${key},${value.url},"[${[...value.dependencies]}]"\n`;
-  }
-
-  try {
-    await fs.writeFile(filePath, csvContent, 'utf-8');
-    console.log(`CSV file written successfully to ${filePath}`);
-  } catch (error) {
-    console.error('Error writing CSV file:', error);
-  }
+    try {
+        await fs.mkdir(path.dirname(filePath), { recursive: true });
+        await fs.writeFile(filePath, JSON.stringify(payload, null, 2), 'utf-8');
+        console.log(`JSON file written successfully to ${filePath}`);
+    } catch (error) {
+        console.error('Error writing JSON file:', error);
+    }
 }
 
 function processAST(filepath, ast) {
     recast.visit(ast, {
         visitImportDeclaration(path) {
-            const dependencyName = path.value.id.name;
-            console.log("Found ES6 import:" + dependencyName + " from " + filepath);
-            addSketchDependency(filepath, dependencyName);
+            const source = path.value.source?.value;
+
+            if (isThirdPartySource(source)) {
+                const dependency = createThirdPartyDependency(source);
+                console.log(`Found import dependency: ${source} from ${filepath}`);
+                addSketchDependency(filepath, dependency);
+            }
+
             this.traverse(path);
         },
         visitCallExpression(path) {
             const node = path.value;
             if (node.callee.name === 'require') {
-                if (node.arguments.length > 0 && (node.arguments[0].type === 'Literal' || node.arguments[0].type === 'StringLiteral')) {
-                    const dependencyName = node.arguments[0].value
-                    console.log("Found require() Dependency:", dependencyName  + " from " + filepath);
-                    addSketchDependency(filepath, dependencyName);
+                if (node.arguments.length > 0 && isStaticStringLiteral(node.arguments[0])) {
+                    const dependencyName = node.arguments[0].value;
+                    if (isThirdPartySource(dependencyName)) {
+                        const dependency = createThirdPartyDependency(dependencyName);
+                        console.log(`Found require() dependency: ${dependencyName} from ${filepath}`);
+                        addSketchDependency(filepath, dependency);
+                    }
                 }
             }
             this.traverse(path);
@@ -118,8 +156,8 @@ function processAST(filepath, ast) {
                     // Skip if it's the one declaring it
                     return this.traverse(path);
                 }
-                console.log(`Found Implicit Global Dependency usage: ${name}` + " from " + filepath);
-                addSketchDependency(filepath, name);
+                console.log(`Found implicit global dependency: ${name} from ${filepath}`);
+                addSketchDependency(filepath, createThirdPartyDependency(name));
 
             }
             this.traverse(path);
@@ -133,4 +171,69 @@ main();
 
 function getSketchName(filepath) {
     return filepath.split('/').at(-2);
+}
+
+function getRelativeSketchPath(filepath) {
+    return path.relative(path.resolve(__dirname, "../data"), filepath);
+}
+
+function isStaticStringLiteral(node) {
+    return node && (node.type === 'Literal' || node.type === 'StringLiteral') && typeof node.value === 'string';
+}
+
+function isThirdPartySource(source) {
+    if (!source || typeof source !== 'string') {
+        return false;
+    }
+
+    if (source.startsWith('.') || source.startsWith('/')) {
+        return false;
+    }
+
+    if (source.startsWith('node:') || BUILTIN_MODULES.has(source)) {
+        return false;
+    }
+
+    return true;
+}
+
+function createThirdPartyDependency(name) {
+    return {
+        category: 'Third-Party Libraries',
+        type: inferThirdPartyType(name),
+        name,
+        value: name,
+        dataType: 'string'
+    };
+}
+
+function inferThirdPartyType(name) {
+    if (!name) {
+        return THIRD_PARTY_LIBRARY_TYPES.generic;
+    }
+
+    if (KNOWN_GLOBALS.includes(name) || name.startsWith('p5')) {
+        return THIRD_PARTY_LIBRARY_TYPES.p5;
+    }
+
+    return THIRD_PARTY_LIBRARY_TYPES.generic;
+}
+
+function dependencyKey(dependency) {
+    return [
+        dependency.category,
+        dependency.type,
+        dependency.name,
+        dependency.value,
+        dependency.dataType
+    ].join('|');
+}
+
+function compareDependencies(a, b) {
+    return (
+        a.category.localeCompare(b.category) ||
+        a.type.localeCompare(b.type) ||
+        a.name.localeCompare(b.name) ||
+        a.value.localeCompare(b.value)
+    );
 }
