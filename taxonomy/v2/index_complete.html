@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time-based Artworks ~ Dependency Taxonomy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<main class="container py-4">
+    <h1>Time-based Artworks ~ Dependency Taxonomy</h1>
+    <div class="accordion" id="taxonomyAccordion">
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#layer-spatial">
+                    Spatial and Environmental Layer
+                </button>
+            </h2>
+            <div id="layer-spatial" class="accordion-collapse collapse" data-bs-parent="#taxonomyAccordion">
+                <div class="accordion-body">
+                    <ul>
+                        <li>
+                            <a href="tags/spatial" data-bs-toggle="collapse" data-bs-target="#c-spatial-architecture">Spatial Architecture</a>
+                            <ul class="collapse" id="c-spatial-architecture">
+                                <li>Room dimensions</a></li>
+                                <li>Bounding boxes for VR/AR (e.g., Guardian boundaries)
+                                </li>
+                                <li>Installation footprint</li>
+                                <li>Floorplan</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="tags/environmental" data-bs-toggle="collapse" data-bs-target="#c-environmental-context">Environmental Context</a>
+                            <ul class="collapse" id="c-environmental-context">
+                                <li>Ambient lighting levels for computer vision (lux)
+                                </li>
+                                <li>Acoustic properties for audio-reactive work</li>
+                                <li>Temperature cooling requirements for high-temperature
+                                    rigs.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#layer-hardware">
+                    Hardware Execution Layer
+                </button>
+            </h2>
+            <div id="layer-hardware" class="accordion-collapse collapse" data-bs-parent="#taxonomyAccordion">
+                <div class="accordion-body">
+                    <ul>
+                        <li>
+                            <a href="tags/hardware" data-bs-toggle="collapse" data-bs-target="#c-hw-input">Input mechanisms</a>
+                            <ul class="collapse" id="c-hw-input">
+                                <li>
+                                    <a href="tags/hardware/input/mouse" data-bs-toggle="collapse" data-bs-target="#c-hw-input-peripherals">Standard Peripherals</a>
+                                    <ul class="collapse" id="c-hw-input-peripherals">
+                                        <li>Mouse</li>
+                                        <li>Keyboard</li>
+                                        <li>Gamepad</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="tags/hardware/input/sensors" data-bs-toggle="collapse" data-bs-target="#c-hw-input-sensors">Sensors</a>
+                                    <ul class="collapse" id="c-hw-input-sensors">
+                                        <li>Accelerometer</li>
+                                        <li>Gyroscope</li>
+                                        <li>Magnetometer</li>
+                                        <li>Compass</li>
+                                        <li>Barometer</li>
+                                        <li>GPS</li>
+                                        <li>Depth cameras</li>
+                                        <li>Inertial measurement unit (IMU)</li>
+                                        <li>Light sensors</li>
+                                        <li>Proximity sensors</li>
+                                        <li>LiDAR</li>
+                                        <li>Radar</li>
+                                    </ul>
+                                </li>
+                                <li><a href="tags/hardware/input/controllers" data-bs-toggle="collapse" data-bs-target="#c-hw-input-micro">Micro-Controllers</a>
+                                    <ul class="collapse" id="c-hw-input-micro">
+                                        <li>Arduino</li>
+                                        <li>Raspberry Pi</li>
+                                        <li>ESP32</li>
+                                        <li>Custom printed circuit boards (PCBs)</li>
+                                    </ul>
+                                </li>
+                                <li><a href="tags/hardware/input/camera" data-bs-toggle="collapse" data-bs-target="#c-hw-input-cameras">Cameras and Audio Inputs</a>
+                                    <ul class="collapse" id="c-hw-input-cameras">
+                                        <li>Webcam or external camera</li>
+                                        <li>Microphone</li>
+                                        <li>Capture card</li>
+                                    </ul>
+                                </li>
+                                <li><a href="tags/hardware/input/touch" data-bs-toggle="collapse" data-bs-target="#c-hw-input-touch">Touch and specialized controllers</a>
+                                    <ul class="collapse" id="c-hw-input-touch">
+                                        <li>Touchscreen</li>
+                                        <li>Stylus or graphics tablet</li>
+                                        <li>MIDI controller</li>
+                                        <li>Motion controller</li>
+                                        <li>Eye-tracking device</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="tags/hardware" data-bs-toggle="collapse" data-bs-target="#c-hw-output">Output mechanisms</a>
+                            <ul class="collapse" id="c-hw-output">
+                                <li><a href="tags/hardware/output/display" data-bs-toggle="collapse" data-bs-target="#c-hw-output-display">Displays</a>
+                                    <ul class="collapse" id="c-hw-output-display">
+                                        <li>LCD</li>
+                                        <li>OLED</li>
+                                        <li>LED</li>
+                                        <li>CRT</li>
+                                        <li>Projector</li>
+                                    </ul>
+                                </li>
+                                <li><a href="tags/hardware/output/actuators" data-bs-toggle="collapse" data-bs-target="#c-hw-output-actuators">Actuators &amp; Robotics</a>
+                                    <ul class="collapse" id="c-hw-output-actuators">
+                                        <li>Servos</li>
+                                        <li>Relays</li>
+                                        <li>Motors</li>
+                                        <li>Pneumatic valves</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="tags/hardware/output/audio" data-bs-toggle="collapse" data-bs-target="#c-hw-output-audio">Audio</a>
+                                    <ul class="collapse" id="c-hw-output-audio">
+                                        <li>Speakers</li>
+                                        <li>Multichannel sound cards</li>
+                                        <li>Digital-to-analog converter (DACs)</li>
+                                    </ul>
+                                </li>
+                                <li><a href="tags/hardware/output/lighting" data-bs-toggle="collapse" data-bs-target="#c-hw-output-lighting">Lighting and Physical Output</a>
+                                    <ul class="collapse" id="c-hw-output-lighting">
+                                        <li>DMX-controlled lighting</li>
+                                        <li>LED strips or matrices</li>
+                                        <li>Plotters and printers</li>
+                                        <li>Haptic devices</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/hardware" data-bs-toggle="collapse" data-bs-target="#c-hw-compute">Compute Architecture</a>
+                            <ul class="collapse" id="c-hw-compute">
+                                <li><a href="tags/hardware/compute-cpu" data-bs-toggle="collapse" data-bs-target="#c-hw-compute-cpu">CPU</a>
+                                    <ul class="collapse" id="c-hw-compute-cpu">
+                                        <li>x86</li>
+                                        <li>ARM</li>
+                                        <li>RISC-V</li>
+                                    </ul>
+                                </li>
+                                <li><a href="tags/hardware/compute-gpu" data-bs-toggle="collapse" data-bs-target="#c-hw-compute-gpu">GPU</a>
+                                    <ul class="collapse" id="c-hw-compute-gpu">
+                                        <li>VRAM</li>
+                                        <li>Tensor cores</li>
+                                    </ul>
+                                </li>
+                                <li><a href="tags/hardware/memory" data-bs-toggle="collapse" data-bs-target="#c-hw-memory-storage">Memory and storage</a>
+                                    <ul class="collapse" id="c-hw-memory-storage">
+                                        <li>RAM capacity</li>
+                                        <li>Persistent storage capacity</li>
+                                        <li>Storage performance</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#layer-system">
+                    System and Operating System Layer
+                </button>
+            </h2>
+            <div id="layer-system" class="accordion-collapse collapse" data-bs-parent="#taxonomyAccordion">
+                <div class="accordion-body">
+                    <ul>
+                        <li><a href="tags/software" data-bs-toggle="collapse" data-bs-target="#c-sys-kernel">Specific kernel versions, distributions, and patch levels</a>
+                            <ul class="collapse" id="c-sys-kernel">
+                                <li><a href="tags/software/linux" data-bs-toggle="collapse" data-bs-target="#c-sys-linux">Linux distribution and version</a>
+                                    <ul class="collapse" id="c-sys-linux">
+                                        <li>Ubuntu 20.04 LTS</li>
+                                    </ul>
+                                </li>
+                                <li><a href="tags/software/windows" data-bs-toggle="collapse" data-bs-target="#c-sys-windows">Windows version and build</a>
+                                    <ul class="collapse" id="c-sys-windows">
+                                        <li>Windows 10 Build 1909</li>
+                                    </ul>
+                                </li>
+                                <li><a href="tags/software/macos" data-bs-toggle="collapse" data-bs-target="#c-sys-macos">macOS version and build</a>
+                                    <ul class="collapse" id="c-sys-macos">
+                                        <li>macOS 12.0 (21A559)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/software/sys-drivers" data-bs-toggle="collapse" data-bs-target="#c-sys-drivers">System Drivers:</a> Graphics APIs and drivers
+                            <ul class="collapse" id="c-sys-drivers">
+                                <li>NVIDIA CUDA</li>
+                                <li>OpenGL</li>
+                                <li>Vulkan</li>
+                                <li>DirectX</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/software/sys-libraries" data-bs-toggle="collapse" data-bs-target="#c-sys-libraries">System Libraries:</a> Core low-level binaries
+                            <ul class="collapse" id="c-sys-libraries">
+                                <li>Glibc</li>
+                                <li>Dynamic link libraries/.dlls</li>
+                                <li>MacOS frameworks</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/software/sys-services" data-bs-toggle="collapse" data-bs-target="#c-sys-services">System Services and Capabilities</a>
+                            <ul class="collapse" id="c-sys-services">
+                                <li>Audio and video codecs</li>
+                                <li>Installed system fonts</li>
+                                <li>Camera and microphone permissions</li>
+                                <li>Graphics acceleration settings</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#layer-toolchains">
+                    Build Toolchains and Package Ecosystems Layer
+                </button>
+            </h2>
+            <div id="layer-toolchains" class="accordion-collapse collapse" data-bs-parent="#taxonomyAccordion">
+                <div class="accordion-body">
+                    <ul>
+                        <li><a href="tags/software/build-compilers" data-bs-toggle="collapse" data-bs-target="#c-build-compilers">Compilers &amp; Interpreters</a>
+                            <ul class="collapse" id="c-build-compilers">
+                                <li>Clang</li>
+                                <li>GCC</li>
+                                <li>MSVC</li>
+                                <li>LLVM</li>
+                                <li>Rust</li>
+                                <li>Go</li>
+                                <li>Java Development Kit (JDK)</li>
+                                <li>Python interpreter versions</li>
+                                <li>Node.js</li>
+                                <li>Ruby</li>
+                                <li>Perl</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/software/build-systems" data-bs-toggle="collapse" data-bs-target="#c-build-systems">Build systems</a>
+                            <ul class="collapse" id="c-build-systems">
+                                <li>CMake</li>
+                                <li>Make</li>
+                                <li>Gradle</li>
+                                <li>Webpack</li>
+                                <li>Meson</li>
+                                <li>SCons</li>
+                                <li>Bazel</li>
+                                <li>Ninja</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/software/build-package" data-bs-toggle="collapse" data-bs-target="#c-build-package">Package managers &amp; Registries</a>
+                            <ul class="collapse" id="c-build-package">
+                                <li>npm</li>
+                                <li>PyPI</li>
+                                <li>Maven</li>
+                                <li>NuGet</li>
+                                <li>Homebrew</li>
+                                <li>APT</li>
+                                <li>Yarn</li>
+                                <li>Composer</li>
+                                <li>Go Modules</li>
+                                <li>Cargo</li>
+                            </ul>
+                        </li>
+                        <li>Version control systems</li>
+                        <li>Containerization</li>
+                        <li>Virtualization</li>
+                        <li>Cloud services</li>
+                        <li><a href="tags/software/build-dependency" data-bs-toggle="collapse" data-bs-target="#c-build-dependency">Dependency Manifests and Lockfiles</a>
+                            <ul class="collapse" id="c-build-dependency">
+                                <li>package.json</li>
+                                <li>package-lock.json</li>
+                                <li>yarn.lock</li>
+                                <li>pnpm-lock.yaml</li>
+                                <li>Import maps</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/software/build-bundler" data-bs-toggle="collapse" data-bs-target="#c-build-bundler">Bundlers and Development Servers</a>
+                            <ul class="collapse" id="c-build-bundler">
+                                <li>Vite</li>
+                                <li>Parcel</li>
+                                <li>Rollup</li>
+                                <li>esbuild</li>
+                                <li>Browserify</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/software/build-containerization" data-bs-toggle="collapse" data-bs-target="#c-build-containerization">Containerization and Reproducible Environments</a>
+                            <ul class="collapse" id="c-build-containerization">
+                                <li>Docker</li>
+                                <li>Podman</li>
+                                <li>Dev containers</li>
+                                <li>Nix or Guix environments</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#layer-runtime">
+                    Execution Environment and Runtime Layer
+                </button>
+            </h2>
+            <div id="layer-runtime" class="accordion-collapse collapse" data-bs-parent="#taxonomyAccordion">
+                <div class="accordion-body">
+                    <ul>
+                        <li><a href="tags/software/runtime-browser" data-bs-toggle="collapse" data-bs-target="#c-runtime-browser">Web Browser Engines</a>
+                            <ul class="collapse" id="c-runtime-browser">
+                                <li>Chromium</a></li>
+                                <li>Gecko</a></li>
+                                <li>WebKit</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/software/runtime-storage" data-bs-toggle="collapse" data-bs-target="#c-runtime-storage">Local storage</a>
+                            <ul class="collapse" id="c-runtime-storage">
+                                <li>IndexedDB</a></li>
+                                <li>WebSQL</a></li>
+                                <li>Cookies</a></li>
+                                <li>SessionStorage</a></li>
+                            </ul>
+                        </li>
+                        <li>Flags</li>
+                        <li>Extensions</li>
+                        <li><a href="tags/software/runtime-frameworks" data-bs-toggle="collapse" data-bs-target="#c-runtime-frameworks">Frameworks and Runtimes</a>
+                            <ul class="collapse" id="c-runtime-frameworks">
+                                <li>Processing</li>
+                                <li>TouchDesigner</li>
+                                <li>Blender</li>
+                                <li>OpenFrameworks</li>
+                                <li>OpenXR</li>
+                                <li>Max/MSP</li>
+                                <li>Cinder</li>
+                                <li>C4D</li>
+                                <li>Maya</li>
+                                <li>Houdini</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/software/runtime-game" data-bs-toggle="collapse" data-bs-target="#c-runtime-game">Game engines</a>
+                            <ul class="collapse" id="c-runtime-game">
+                                <li>Unity</li>
+                                <li>Godot</li>
+                                <li>Unreal Engine</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/software/runtime-legacy" data-bs-toggle="collapse" data-bs-target="#c-runtime-legacy">Legacy Platforms</a>
+                            <ul class="collapse" id="c-runtime-legacy">
+                                <li>Flash</li>
+                                <li>Silverlight</li>
+                                <li>Java Applets</li>
+                                <li>Shockwave</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/software/runtime-p5" data-bs-toggle="collapse" data-bs-target="#c-runtime-p5">p5.js Runtime</a>
+                            <ul class="collapse" id="c-runtime-p5">
+                                <li>p5.js version</li>
+                                <li>p5.sound version</li>
+                                <li>p5.js add-on libraries</li>
+                                <li>Global mode or instance mode</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/software/runtime-js" data-bs-toggle="collapse" data-bs-target="#c-runtime-js">JavaScript and Browser Runtime</a>
+                            <ul class="collapse" id="c-runtime-js">
+                                <li>Browser name and version</li>
+                                <li>JavaScript language features</li>
+                                <li>ECMAScript modules</li>
+                                <li>WebAssembly support</li>
+                                <li>Hardware acceleration</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/software/runtime-web-apis" data-bs-toggle="collapse" data-bs-target="#c-runtime-web-apis">Required Web APIs and Permissions</a>
+                            <ul class="collapse" id="c-runtime-web-apis">
+                                <li>Canvas 2D</li>
+                                <li>WebGL or WebGL2</li>
+                                <li>Web Audio API</li>
+                                <li>MediaDevices API</li>
+                                <li>Geolocation API</li>
+                                <li>Web MIDI API</li>     
+                                <li>Web Serial API</li>
+                                <li>Web Bluetooth API</li>
+                                <li>Fullscreen and pointer-lock permissions</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#layer-network">
+                    Network, Infrastructure, and Protocol Layer
+                </button>
+            </h2>
+            <div id="layer-network" class="accordion-collapse collapse" data-bs-parent="#taxonomyAccordion">
+                <div class="accordion-body">
+                    <ul>
+                        <li><a href="tags/network/protocols" data-bs-toggle="collapse" data-bs-target="#c-net-protocols">Network protocols</a>
+                            <ul class="collapse" id="c-net-protocols">
+                                <li>HTTP/HTTPS</li>
+                                <li>HTTPS</li>
+                                <li>FTP</li>
+                                <li>SMTP</li>
+                                <li>DNS</li>
+                                <li>Telnet</li>
+                                <li>SSH</li>
+                                <li>WebSockets</li>
+                                <li>DHCP</li>
+                                <li>MIDI</li>
+                                <li>OSC</li>
+                                <li>Art-Net/DMX</li>
+                                <li>MCP</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/network/infrastructure" data-bs-toggle="collapse" data-bs-target="#c-net-infra"> Network Infrastructure</a>
+                            <ul class="collapse" id="c-net-infra">
+                                <li>Domain Name System (DNS) routing</li>
+                                <li>Local Area Networks (LAN)</li>
+                                <li>Wide Area Networks (WAN)</li>
+                                <li>Ethernet</li>
+                                <li>WiFi</li>
+                                <li>Bluetooth</li>
+                                <li>Wi-Fi Direct</li>
+                                <li>Bluetooth Low Energy (BLE)</li>
+                                <li>IPv4 vs. IPv6 compatibility</li>
+                                <li>Bandwidth/latency constraints</li>
+                            </ul>
+                        </li>
+                        <li>Distributed databases</li>
+                        <li>Cloud Providers (AWS, Google Cloud, Azure)</li>
+                        <li><a href="tags/network/hosting" data-bs-toggle="collapse" data-bs-target="#c-net-hosting">Hosting and Content Delivery</a>
+                            <ul class="collapse" id="c-net-hosting">
+                                <li>Web host or static-site provider</li>
+                                <li>Content delivery network (CDN)</li>
+                                <li>Remote script URLs</li>
+                                <li>Remote asset URLs</li>
+                                <li>CORS configuration</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/network/authentication" data-bs-toggle="collapse" data-bs-target="#c-net-auth">Authentication and Service Access</a>
+                            <ul class="collapse" id="c-net-auth">
+                                <li>API keys and access tokens</li>
+                                <li>OAuth providers</li>
+                                <li>User accounts</li>
+                                <li>Rate limits and quotas</li>
+                                <li>Service availability</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#layer-application">
+                    Application, Logic, and Data Layer
+                </button>
+            </h2>
+            <div id="layer-application" class="accordion-collapse collapse" data-bs-parent="#taxonomyAccordion">
+                <div class="accordion-body">
+                    <ul>
+                        <li>Application programming interfaces (APIs)</li>
+                        <li>Third-Party Libraries</li>
+                        <li><a href="tags/application/ai" data-bs-toggle="collapse" data-bs-target="#c-app-ai">AI and Machine-Learning Models</a>
+                            <ul class="collapse" id="c-app-ai">
+                                <li><a href="tags/application/ai/local" data-bs-toggle="collapse" data-bs-target="#c-app-ai-local">Local models</a>
+                                    <ul class="collapse" id="c-app-ai-local">
+                                        <li>Computer Vision: OpenCV, MediaPipe</li>
+                                        <li>Image Processing</li>
+                                        <li>Natural Language Processing (NLP)</li>
+                                        <li>Speech Recognition</li>
+                                        <li>Machine Learning</li>
+                                        <li>Large Language Models: Ollama</li>
+                                    </ul>
+                                </li>
+                                <li><a href="tags/application/ai/remote" data-bs-toggle="collapse" data-bs-target="#c-app-ai-remote">Remote models</a>
+                                    <ul class="collapse" id="c-app-ai-remote">
+                                        <li>Computer Vision: Ultralytics</li>
+                                        <li>Natural Language Processing (NLP)</li>
+                                        <li>Machine Learning: Hugging Face endpoints</li>
+                                        <li>Large Language Models: OpenAI, Anthropic</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li><a href="tags/application/web-apis" data-bs-toggle="collapse" data-bs-target="#c-app-webapi">Web API endpoints</a> Social media feeds, live weather data
+                            <ul class="collapse" id="c-app-webapi">
+                                <li>RESTful APIs</li>
+                                <li>SOAP APIs</li>
+                                <li>GraphQL APIs</li>
+                                <li>JSON APIs</li>
+                                <li>XML APIs</li>
+                                <li>Web Sockets</li>
+                                <li>WebRTC</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/application/assets" data-bs-toggle="collapse" data-bs-target="#c-app-assets">Digital Assets</a>
+                        <ul class="collapse" id="c-app-assets">
+                            <li>Codebases</li>
+                            <li>High-resolution textures</li>
+                            <li>3D meshes</li>
+                            <li>3D models</li>
+                            <li>Audio samples</li>
+                            <li>Font files</li>
+                            <li>Images and sprites</li>
+                            <li>Video files</li>
+                            <li>Shader files</li>
+                            <li>SVG files</li>
+                        </ul>
+                        </li>
+                        <li><a href="tags/application/ledger" data-bs-toggle="collapse" data-bs-target="#c-app-ledger">State &amp; Consensus Ledger</a>
+                            <ul class="collapse" id="c-app-ledger">
+                                <li>Blockchain dependencies (Ethereum, Tezos)</li>
+                                <li>Distributed Ledger Technology (DLT)</li>
+                                <li>Smart contract addresses</li>
+                                <li>RPC node providers</li>
+                                <li>IPFS pinning dependencies</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/application/configuration" data-bs-toggle="collapse" data-bs-target="#c-app-config">Configuration and Parameters</a>
+                            <ul class="collapse" id="c-app-config">
+                                <li>Configuration files</li>
+                                <li>Environment variables</li>
+                                <li>Runtime parameters</li>
+                                <li>Feature flags</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/application/data-sources" data-bs-toggle="collapse" data-bs-target="#c-app-source">Data Sources and Persistence</a>
+                            <ul class="collapse" id="c-app-source">
+                                <li>Configuration files</li>
+                                <li>Local datasets</li>
+                                <li>Remote datasets</li>
+                                <li>JSON, CSV, XML, or binary data files</li>
+                                <li>Local databases</li>
+                                <li>Remote databases</li>
+                            </ul>
+                        </li>
+                        <li><a href="tags/application/determinism" data-bs-toggle="collapse" data-bs-target="#c-app-determinism">Determinism and Generated State</a>
+                            <ul class="collapse" id="c-app-determinism">
+                                <li>Configuration files</li>
+                                <li>Random seed</li>
+                                <li>Noise seed</li>
+                                <li>Saved application state</li>
+                                <li>User-generated content</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#layer-governance">
+                    Governance Layer: Legal and Temporal Constraints
+                </button>
+            </h2>
+            <div id="layer-governance" class="accordion-collapse collapse" data-bs-parent="#taxonomyAccordion">
+                <div class="accordion-body">
+                    <ul>
+                        <li><a href="tags/governance/licensing" data-bs-toggle="collapse" data-bs-target="#c-gov-licensing">Licensing &amp; DRM:</a>
+                        <ul class="collapse" id="c-gov-licensing">
+                            <li>Proprietary software authorization</li>
+                            <li>Open source licensing</li>
+                            <li>Digital rights management (DRM)</li>
+                            <li>Software licensing</li>
+                            <li>Hardware dongles (iLok)</li>
+                            <li>Active subscription checks</li>
+                            <li>Node-locked licenses</li>
+                        </ul>
+                        </li>
+                        <li><a href="tags/governance/temporal" data-bs-toggle="collapse" data-bs-target="#c-gov-temporal">Temporal Dependencies</a>
+                        <ul class="collapse" id="c-gov-temporal">
+                            <li>System clock reliance</li>
+                            <li>Time-based restrictions</li>
+                            <li>Geographic restrictions</li>
+                            <li>NTP time-sync servers</li>
+                            <li>Epoch time overflows (Y2K38 bug)</li>
+                            <li>Date-bound algorithmic behaviors</li>
+                        </ul>
+                        </li>
+                        <li><a href="tags/governance/external-constraints" data-bs-toggle="collapse" data-bs-target="#c-gov-constraints">External Service and Policy Constraints</a>
+                        <ul class="collapse" id="c-gov-constraints">
+                            <li>Terms-of-service restrictions</li>
+                            <li>API deprecation or shutdown</li>
+                            <li>Privacy and consent requirements</li>
+                            <li>Data-retention policies</li>
+                            <li>Regional service availability</li>
+                        </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

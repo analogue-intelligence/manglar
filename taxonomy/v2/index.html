@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P5 Sketches ~ Dependency Taxonomy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/main.css" rel="stylesheet">
+</head>
+<body>
+
+<main class="container py-4">
+    <h1>P5 Sketches ~ Dependency Taxonomy</h1>
+    <p class="tax-intro text-muted">
+        A browsable taxonomy of the dependencies that show up in p5.js sketches. Top-level categories start
+        expanded; their sub-categories start collapsed. Click one to drill in or use the search box below
+        to filter down to a dependency type.
+    </p>
+
+    <p class="tax-intro text-muted">
+        We acknowledge that p5 offers different possibilities for generative art.
+        However, the taxonomy below is focused on p5.js sketches that are displayed on a screen or projector.
+        Therefore, physical computing aspects beyond the ones described below are not considered.
+    </p>
+
+    <div class="tax-controls">
+        <input type="search" id="tax-search" class="form-control tax-search"
+               placeholder="Search the taxonomy&hellip;" aria-label="Search the taxonomy">
+        <button type="button" id="tax-expand-all" class="btn btn-sm btn-outline-secondary">Expand all</button>
+        <button type="button" id="tax-collapse-all" class="btn btn-sm btn-outline-secondary">Collapse all</button>
+    </div>
+    <p id="tax-no-results" class="tax-no-results d-none">No matching categories found.</p>
+
+    <nav aria-label="Dependency taxonomy">
+        <ul class="tax-tree" id="taxonomy-tree">
+            <li>
+                <button class="tax-toggle" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#c-app-lib"
+                        aria-expanded="true" aria-controls="c-app-lib">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
+                    Third-Party Libraries
+                </button>
+                <p class="tax-desc small">External code libraries the sketch imports to extend p5.js with extra functionality.</p>
+                <ul class="collapse show" id="c-app-lib">
+                    <li class="tax-leaf">General JS libraries (e.g., semver and @babel/traverse)</li>
+                    <li class="tax-leaf">P5 Libraries (e.g., p5.sound and p5.capture )</li>
+<!--                    <li>-->
+<!--                        <button class="tax-toggle" type="button"-->
+<!--                                data-bs-toggle="collapse" data-bs-target="#c-app-lib-p5"-->
+<!--                                aria-expanded="false" aria-controls="c-app-lib-p5">-->
+<!--                            <span class="chevron" aria-hidden="true">&#9656;</span>-->
+<!--                            P5 Libraries-->
+<!--                        </button>-->
+<!--                        <ul class="collapse show" id="c-app-lib-p5">-->
+<!--                            <li class="tax-leaf">p5.sound</li>-->
+<!--                            <li class="tax-leaf">p5.capture</li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <button class="tax-toggle" type="button"-->
+<!--                                data-bs-toggle="collapse" data-bs-target="#c-app-lib-js"-->
+<!--                                aria-expanded="false" aria-controls="c-app-lib-js">-->
+<!--                            <span class="chevron" aria-hidden="true">&#9656;</span>-->
+<!--                            Common JS libraries-->
+<!--                        </button>-->
+<!--                        <ul class="collapse" id="c-app-lib-js">-->
+<!--                            <li class="tax-leaf">semver</li>-->
+<!--                            <li class="tax-leaf">@babel/traverse</li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+                </ul>
+            </li>
+
+            <li>
+                <button class="tax-toggle" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#c-app-ai"
+                        aria-expanded="true" aria-controls="c-app-ai">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
+                    AI and Machine-Learning Models
+                </button>
+                <p class="tax-desc small">Models weights that the sketch relies on to generate, recognize, or transform content.</p>
+                <ul class="collapse show" id="c-app-ai">
+                    <li class="tax-leaf">Model weights (e.g., .pt, .onnx, .ckpt)</li>
+                </ul>
+<!--                <ul class="collapse show" id="c-app-ai">-->
+<!--                    <li>-->
+<!--                        <button class="tax-toggle" type="button"-->
+<!--                                data-bs-toggle="collapse" data-bs-target="#c-app-ai-local"-->
+<!--                                aria-expanded="false" aria-controls="c-app-ai-local">-->
+<!--                            <span class="chevron" aria-hidden="true">&#9656;</span>-->
+<!--                            Local models-->
+<!--                        </button>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <button class="tax-toggle" type="button"-->
+<!--                                data-bs-toggle="collapse" data-bs-target="#c-app-ai-remote"-->
+<!--                                aria-expanded="false" aria-controls="c-app-ai-remote">-->
+<!--                            <span class="chevron" aria-hidden="true">&#9656;</span>-->
+<!--                            Remote models-->
+<!--                        </button>-->
+<!--                    </li>-->
+<!--                </ul>-->
+            </li>
+
+            <li>
+                <button class="tax-toggle" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#c-app-webapi"
+                        aria-expanded="true" aria-controls="c-app-webapi">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
+                    API endpoints
+                </button>
+                <p class="tax-desc small">External services the sketch queries for live or third-party data, such as social feeds or weather.</p>
+                <ul class="collapse show" id="c-app-webapi">
+                    <li class="tax-leaf">Domain (e.g., github.com, worldtimeapi.org)</li>
+                    <li class="tax-leaf">Endpoint purposes (e.g., load an image, load audio, fetch weather data)</li>
+                    <li class="tax-leaf">Endpoint status (e.g., available or unavailable)</li>
+                </ul>
+            </li>
+
+            <li>
+                <button class="tax-toggle" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#c-app-assets"
+                        aria-expanded="true" aria-controls="c-app-assets">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
+                    Digital Assets
+                </button>
+                <p class="tax-desc small">Media files the sketch loads and renders, such as images, audio, or 3D models.</p>
+                <ul class="collapse show" id="c-app-assets">
+                    <li class="tax-leaf">3D meshes and models (e.g., .obj, .stl, 3ds)</li>
+                    <li class="tax-leaf">Audio samples (e.g., mp3, wav)</li>
+<!--                    <li class="tax-leaf">Codebases</li>-->
+                    <li class="tax-leaf">Font files (e.g., .ttf, .otf)</li>
+<!--                    <li class="tax-leaf">High-resolution textures</li>-->
+                    <li class="tax-leaf">Images and sprites (e.g., png, and svg)</li>
+                    <li class="tax-leaf">Shader files (e.g., .glsl, .vert)</li>
+<!--                    <li class="tax-leaf">SVG files</li>-->
+                    <li class="tax-leaf">Video files (e.g., mpg, mov)</li>
+                </ul>
+            </li>
+
+            <li>
+                <button class="tax-toggle" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#c-app-source"
+                        aria-expanded="true" aria-controls="c-app-source">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
+                    Data Sources and Persistence
+                </button>
+                <p class="tax-desc small">Where the sketch reads its input from and where it stores its output or state.</p>
+                <ul class="collapse show" id="c-app-source">
+                    <li class="tax-leaf">Databases (e.g., .db, .sql)</li>
+                    <li class="tax-leaf">Datasets (JSON, CSV, XML, or binary data files)</li>
+<!--                    <li class="tax-leaf">Remote databases</li>-->
+<!--                    <li class="tax-leaf">Remote datasets (JSON, CSV, XML, or binary data files)</li>-->
+                </ul>
+            </li>
+
+            <li>
+                <button class="tax-toggle" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#c-net-internet"
+                        aria-expanded="true" aria-controls="c-net-internet">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
+                    Internet Access Requirement
+                </button>
+                <p class="tax-desc small">Does the sketch depend on internet connection.</p>
+                <ul class="collapse show" id="c-net-internet">
+<!--                    <li class="tax-leaf">Degrades gracefully without internet</li>-->
+                    <li class="tax-leaf">Fully offline (no internet required)</li>
+                    <li class="tax-leaf">Internet required</li>
+<!--                    <li class="tax-leaf">Internet required continuously during execution</li>-->
+                </ul>
+            </li>
+
+            <li>
+                <button class="tax-toggle" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#c-net-protocols"
+                        aria-expanded="true" aria-controls="c-net-protocols">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
+                    Network protocols
+                </button>
+                <p class="tax-desc small">The communication protocols the sketch uses to exchange data over a network.</p>
+                <ul class="collapse show" id="c-net-protocols">
+                    <li class="tax-leaf">Art-Net/DMX</li>
+                    <li class="tax-leaf">DHCP</li>
+                    <li class="tax-leaf">DNS</li>
+                    <li class="tax-leaf">FTP</li>
+                    <li class="tax-leaf">HTTP/HTTPS</li>
+                    <li class="tax-leaf">MCP</li>
+                    <li class="tax-leaf">MIDI</li>
+                    <li class="tax-leaf">OSC</li>
+                    <li class="tax-leaf">SMTP</li>
+                    <li class="tax-leaf">SSH</li>
+                    <li class="tax-leaf">Telnet</li>
+                    <li class="tax-leaf">WebSockets</li>
+                </ul>
+            </li>
+
+<!--            <li>-->
+<!--                <button class="tax-toggle" type="button"-->
+<!--                        data-bs-toggle="collapse" data-bs-target="#c-net-hosting"-->
+<!--                        aria-expanded="true" aria-controls="c-net-hosting">-->
+<!--                    <span class="chevron" aria-hidden="true">&#9656;</span>-->
+<!--                    Hosting and Content Delivery-->
+<!--                </button>-->
+<!--                <p class="tax-desc small">Where the sketch and its assets are served from on the web.</p>-->
+<!--                <ul class="collapse show" id="c-net-hosting">-->
+<!--                    <li class="tax-leaf">Content delivery network (CDN)</li>-->
+<!--&lt;!&ndash;                    <li class="tax-leaf">CORS configuration</li>&ndash;&gt;-->
+<!--                    <li class="tax-leaf">Remote asset or script URLs</li>-->
+<!--&lt;!&ndash;                    <li class="tax-leaf">Remote script URLs</li>&ndash;&gt;-->
+<!--                    <li class="tax-leaf">Web host or static-site provider</li>-->
+<!--                </ul>-->
+<!--            </li>-->
+
+            <li>
+                <button class="tax-toggle" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#c-hw-input"
+                        aria-expanded="true" aria-controls="c-hw-input">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
+                    Interaction
+                </button>
+                <p class="tax-desc small">The physical devices a viewer uses to interact with the sketch.</p>
+                <ul class="collapse show" id="c-hw-input">
+<!--                    <li class="tax-leaf">Eye-tracking device</li>-->
+<!--                    <li class="tax-leaf">Gamepad</li>-->
+                    <li class="tax-leaf">Keyboard</li>
+                    <li class="tax-leaf">Microphone</li>
+<!--                    <li class="tax-leaf">MIDI controller</li>-->
+                    <li class="tax-leaf">Mouse</li>
+                    <li class="tax-leaf">Webcam or external camera</li>
+<!--                    <li>-->
+<!--                        <button class="tax-toggle" type="button"-->
+<!--                                data-bs-toggle="collapse" data-bs-target="#c-hw-input-peripherals"-->
+<!--                                aria-expanded="false" aria-controls="c-hw-input-peripherals">-->
+<!--                            <span class="chevron" aria-hidden="true">&#9656;</span>-->
+<!--                            Standard Peripherals-->
+<!--                        </button>-->
+<!--                        <ul class="collapse" id="c-hw-input-peripherals">-->
+<!--                            <li class="tax-leaf">Mouse</li>-->
+<!--                            <li class="tax-leaf">Keyboard</li>-->
+<!--                            <li class="tax-leaf">Gamepad</li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <button class="tax-toggle" type="button"-->
+<!--                                data-bs-toggle="collapse" data-bs-target="#c-hw-input-cameras"-->
+<!--                                aria-expanded="false" aria-controls="c-hw-input-cameras">-->
+<!--                            <span class="chevron" aria-hidden="true">&#9656;</span>-->
+<!--                            Cameras and Audio Inputs-->
+<!--                        </button>-->
+<!--                        <ul class="collapse" id="c-hw-input-cameras">-->
+<!--                            <li class="tax-leaf">Webcam or external camera</li>-->
+<!--                            <li class="tax-leaf">Microphone</li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        <button class="tax-toggle" type="button"-->
+<!--                                data-bs-toggle="collapse" data-bs-target="#c-hw-input-touch"-->
+<!--                                aria-expanded="false" aria-controls="c-hw-input-touch">-->
+<!--                            <span class="chevron" aria-hidden="true">&#9656;</span>-->
+<!--                            Touch and specialized controllers-->
+<!--                        </button>-->
+<!--                        <ul class="collapse" id="c-hw-input-touch">-->
+<!--                            <li class="tax-leaf">Touchscreen</li>-->
+<!--                            <li class="tax-leaf">Stylus or graphics tablet</li>-->
+<!--                            <li class="tax-leaf">MIDI controller</li>-->
+<!--                            <li class="tax-leaf">Motion controller</li>-->
+<!--                            <li class="tax-leaf">Eye-tracking device</li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/main.js"></script>
+</body>
+</html>
