@@ -124,7 +124,7 @@
                     <span class="chevron" aria-hidden="true">&#9656;</span>
                     Digital Assets
                 </button>
-                <p class="tax-desc small">Media files the sketch loads and renders, such as images, audio, or 3D models.</p>
+                <p class="tax-desc small">Media or content files the sketch loads and renders, such as images, audio, or 3D models.</p>
                 <ul class="collapse show" id="c-app-assets">
                     <li class="tax-leaf">3D meshes and models (e.g., .obj, .stl, 3ds)</li>
                     <li class="tax-leaf">Audio samples (e.g., mp3, wav)</li>
@@ -147,7 +147,7 @@
                 </button>
                 <p class="tax-desc small">Where the sketch reads its input from and where it stores its output or state.</p>
                 <ul class="collapse show" id="c-app-source">
-                    <li class="tax-leaf">Databases (e.g., .db, .sql)</li>
+                    <li class="tax-leaf">Databases (e.g., .db, .sql, .pdb)</li>
                     <li class="tax-leaf">Datasets (JSON, CSV, XML, or binary data files)</li>
 <!--                    <li class="tax-leaf">Remote databases</li>-->
 <!--                    <li class="tax-leaf">Remote datasets (JSON, CSV, XML, or binary data files)</li>-->
@@ -291,9 +291,9 @@
                     <span class="chevron" aria-hidden="true">&#9656;</span>
                     Browser Settings
                 </button>
-                <p class="tax-desc small">Focuses on the specific-physical connection between the browser and the outside world.</p>
+                <p class="tax-desc small">Browser-specific properties, configurations, or APIs.</p>
                 <ul class="collapse show" id="c-browser">
-                    <li class="tax-leaf">Specific browser plugins or features (e.g., geolocation)</li>
+                    <li class="tax-leaf">Specific browser plugins or features (e.g., geolocation, localstorage)</li>
                 </ul>
             </li>
             <li>
@@ -301,11 +301,24 @@
                         data-bs-toggle="collapse" data-bs-target="#c-dev-infr"
                         aria-expanded="true" aria-controls="c-dev-infr">
                     <span class="chevron" aria-hidden="true">&#9656;</span>
-                    Development Infrastructure
+                    Development and Deployment Infrastructure
                 </button>
                 <p class="tax-desc small">Focuses on the "behind the scenes" components necessary for development, build-time, and archiving.</p>
                 <ul class="collapse show" id="c-dev-infr">
-                    <li class="tax-leaf">Build and development dependencies</li>
+                    <li class="tax-leaf">Build and development dependencies (e.g., transpiler)</li>
+                    <li class="tax-leaf">Dependencies to the host infrastructure (e.g., OpenProcessing's OPC library)</li>
+                </ul>
+            </li>
+            <li>
+                <button class="tax-toggle" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#c-life"
+                        aria-expanded="true" aria-controls="c-life">
+                    <span class="chevron" aria-hidden="true">&#9656;</span>
+                    Lifecycle Management
+                </button>
+                <p class="tax-desc small">.</p>
+                <ul class="collapse show" id="c-life">
+                    <li class="tax-leaf">Artworks that are intended for long-term public display and require 24/7 exhibition maintenance.</li>
                 </ul>
             </li>
         </ul>
